@@ -1,5 +1,7 @@
 Install-Module PSDevOps -Scope CurrentUser -Force
 Import-Module PSDevOps -Force -PassThru | Out-Host
+
+# this builds 'ExcellAnt\.github\workflows\TestAndPublish.yml'
 mkdir .\github | Out-Null
 mkidr .\github\workflows | Out-Null
 

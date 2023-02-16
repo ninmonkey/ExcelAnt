@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+*.zip
+*.pbix
+*.pbit
+*.xlsb
+*.png
+*.jpeg
+.output/*
+.export/*
