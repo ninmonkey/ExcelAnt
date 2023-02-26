@@ -15,13 +15,13 @@ Context 'manuallyInvokedTests' {
     }
     It 'from [FileInfo]' {
         # from file
-        $Pkg.File | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileSystemInfo'
-        $Pkg.File | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileInfo' # more specifically
-        coerce.ToFileSystemInfo -InputObject $Pkg.File | Should -BeOfType 'IO.FileInfo' # more specifically
+        $Pkg.File | coerce.ToFileInfo | Should -BeOfType 'IO.FileSystemInfo'
+        $Pkg.File | coerce.ToFileInfo | Should -BeOfType 'IO.FileInfo' # more specifically
+        coerce.ToFileInfo -InputObject $Pkg.File | Should -BeOfType 'IO.FileInfo' # more specifically
     }
     It 'from [ExcelPackage]' { # [OfficeOpenXml.ExcelPackage]
-        $pkg | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileInfo'
-        coerce.ToFileSystemInfo -InputObject $Pkg | Should -BeOfType 'IO.FileInfo' # more specifically
+        $pkg | coerce.ToFileInfo | Should -BeOfType 'IO.FileInfo'
+        coerce.ToFileInfo -InputObject $Pkg | Should -BeOfType 'IO.FileInfo' # more specifically
     }
       AfterAll {
         Close-ExcelPackage $Pkg -ea 'SilentlyContinue' -Verbose

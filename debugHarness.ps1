@@ -18,7 +18,7 @@ popd -stackname 'harness'
 ) | write-warning -wa 'Continue'
 
 remove-module 'ExcelAnt' -ea ignore
-import-module $Harness.CurImportFullpath -Force
+import-module $Harness.CurImportFullpath -Force -Verbose
 # import-module (Join-Path $Harness.OutputPath 'ExcelAnt') -Force
 # import-module (Join-Path $Harness.SourcePath 'ExcelAnt') -Force
 

@@ -51,7 +51,9 @@ Copyright = '(c) Jake Bolton 2022-2023'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(
+    'ImportExcel'
+)
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
