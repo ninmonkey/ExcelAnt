@@ -4,5 +4,40 @@
             "path": "."
         }
     ],
-    "settings": {}
+    "settings": {
+        //-------- PowerShell Configuration --------
+        // Use a custom PowerShell Script Analyzer settings file for this workspace.
+        // Relative paths for this setting are always relative to the workspace root dir.
+        // Specifies the path to a PowerShell Script Analyzer settings file. To override the default settings for all projects, enter an absolute path, or enter a path relative to your workspace.
+        // use: <file:///C:/Users/cppmo_000/skydrive/Documents/2021/dotfiles_git/powershell/PSScriptAnalyzerSettings.psd1>
+        "powershell.scriptAnalysis.settingsPath": "C:/Users/cppmo_000/skydrive/Documents/2021/dotfiles_git/powershell/PSScriptAnalyzerSettings.psd1",
+        // "powershell.scriptAnalysis.settingsPath": "PSScriptAnalyzerSettings.psd1",
+        "powershell.scriptAnalysis.enable": true,
+        "powershell.scriptAnalysis.settingsPath": "ScriptAnalyzerSettings.psd1",
+        "powershell.codeFormatting.openBraceOnSameLine": true,
+        "powershell.codeFormatting.newLineAfterCloseBrace": true,
+        // "powershell.notebooks.saveMarkdownCellsAs": "LineComment",
+        // "powershell.codeFormatting.ignoreOneLineBlock": true,
+        "powershell.codeFormatting.autoCorrectAliases": true,
+        "powershell.codeFormatting.useConstantStrings": true,
+        "powershell.codeFormatting.useCorrectCasing": true,
+        "powershell.codeFormatting.whitespaceAroundPipe": true,
+        "powershell.codeFormatting.whitespaceBetweenParameters": false,
+        "powershell.integratedConsole.suppressStartupBanner": true,
+        // "powershell.notebooks.saveMarkdownCellsAs": "BlockComment",
+        // "powershell.notebooks.showToggleButton": true,
+        // "powershell.powerShellDefaultVersion": "pwsh",
+        // "powershell.powerShellDefaultVersion": "",
+        "powershell.codeFormatting.alignPropertyValuePairs": true,
+        "powershell.codeFormatting.newLineAfterOpenBrace": false,
+        "powershell.promptToUpdatePowerShell": false,
+        "workbench.commandPalette.preserveInput": true,
+        "powershell.codeFormatting.addWhitespaceAroundPipe": true,
+        "powershell.codeFormatting.trimWhitespaceAroundPipe": true,
+        "powershell.codeFormatting.whitespaceAfterSeparator": true,
+        "powershell.codeFormatting.whitespaceAroundOperator": true,
+        "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
+        "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
+        "powershell.codeFormatting.whitespaceInsideBrace": true,
+    }
 }

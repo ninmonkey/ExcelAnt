@@ -39,3 +39,4 @@
 *.jpeg
 .output/*
 .export/*
+Output/
