@@ -1,7 +1,9 @@
 # Import-Module ImportExcel
 
 @'
-initial
+initial version of Get-ExcelPackageError:
+
+
         15    0.009 cd 'G:\temp\xl'
         16    0.008 $whichXl = gcl |gi
         19    0.031 mkdir temp_exo
@@ -20,13 +22,14 @@ sprint
     - [ ] allow piping of either
     - [ ] maybe ValuesFromParameterType or ParameterName
         to auto coerce packages cleaner ?
-'@ | write-verbose -verbose
+'@ | out-null
 
 function Get-ExcelPackageError {
     # filepath to an excel file
     # copy to g:\temp\xl\auto'
     # expand archive to subdir
     [Alias('xl.Errors.Inspect')]
+    [CmdletBinding()]
     param(
         [string]$ExcelPkg
         # [string]$subdir,
@@ -35,7 +38,7 @@ function Get-ExcelPackageError {
 
     )
 
-    throw 'NYI'
+
     ''
 
     # $coerceFilepath = Get-Item $ExcelPkg
