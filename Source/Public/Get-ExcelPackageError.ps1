@@ -22,7 +22,6 @@ sprint
         to auto coerce packages cleaner ?
 '@ | write-verbose -verbose
 
-throw 'finish'
 function xl.Errors.Inspect {
     # filepath to an excel file
     # copy to g:\temp\xl\auto'
@@ -35,6 +34,7 @@ function xl.Errors.Inspect {
 
     )
 
+    throw 'NYI'
     ''
 
     # $coerceFilepath = Get-Item $ExcelPkg
