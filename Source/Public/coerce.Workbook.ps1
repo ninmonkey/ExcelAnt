@@ -1,67 +1,45 @@
 
-
-
-
-function coerce.ToFileSystemInfo { # build might work if name is coerce-ToFileSystemINfo
+function coerce.ToWorkbook { #
 
     <#
-    .SYNOPSIS
-        coerce strings, [FileInfo], [ExcelPackage]s to [IO.FileInfo]
-    Cases that are* supported
-
-    ask for opinion on Write-Error, vs throw, vs CmdletError
-    especialy since pipeline is involved
-
-    does write-error -ea 'continue' require a return, then ?
-        does PSCmdlet Error recordscontinue' require a return too?
-
+    .synopsis
+        convert filepaths or [ExcelPackage]s, resolving to a workbook
 
     - [ ] 1 file already exists, and is fileinfo
     - [ ] 2 file exists, is a string path
     - [ ] 3 file does not exist
     #>
-    [OutputType('System.IO.FileInfo')]
+    # [OutputType('System.IO.FileSystemInfo')]
     [CMdletBinding()]
     param(
         [Parameter(Mandatory, ValueFromPipeline, position = 0)]
         [object]$InputObject,
 
-        [Parameter()]
-        [OfficeOpenXml.ExcelPackage]$ExcelPackage,
+        #
 
-        # future: what is the cleaner way to pipe multiple non-objects, does 'ValueFromPipelineByPropertyName' make it worse ?
-        # [Parameter(mandatory, ValueFromPipeline, Position=0, ValueFromPipelineByPropertyName=)]
+        # # When creating missing items, the default type is File
+        # [Parameter()]
+        # [ArgumentCompletions('File', 'Directory', 'SymoblicLink', 'Junction', 'HardLink')]
+        # [string]$ItemType = 'File',
 
-        # When creating missing items, the default type is File
-        [Parameter()]
-        [ArgumentCompletions('File', 'Directory', 'SymoblicLink', 'Junction', 'HardLink')]
-        [string]$ItemType = 'File',
-
-        # create file if not yet existing
-        [switch]$CreateIfMissing,
-        [switch]$Mandatory
+        # # create file if not yet existing
+        [switch]$CreateIfMissing
+        # [switch]$Mandatory
 
     )
     begin {
         # $null = $InputObject
     }
     process {
+        throw 'not implemented'
 
         <#
             DirectoryInfo       isa System.IO.FileSystemInfo
             FileInfo            isa System.IO.FileSystemInfo
         #>
         if ($InputObject -is 'IO.FileSystemInfo') {
-            Write-Verbose 'already a FileInfo instance'
+            Write-Verbose 'already a filesysteminfo'
             return $InputObject
-        }
-        if ($InputObject -is 'OfficeOpenXml.ExcelPackage') {
-            write-verbose 'WorkBook has a FileSystemInfo'
-            return $InputObject.File
-        }
-        if($ExcelPackage) {
-            write-verbose 'WorkBook (from type param) has a FileSystemInfo'
-            return $ExcelPackage.File
         }
         if ($InputObject -is 'string') {
             $alreadyExists = Test-Path $InputObject

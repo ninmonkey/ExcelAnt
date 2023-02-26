@@ -6,7 +6,7 @@ $__buildCfg = @{
 #Dot source the files
 [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
     'coerce.ToFileSystemInfo'
-    # 'Get-RandomNancyColor'
+    # 'Get-RandomExcelAntColor'
     'xl.Errors.Inspect'
 )
 Foreach($FolderItem in 'Private','Public') {
@@ -44,8 +44,8 @@ Foreach($FolderItem in 'Private','Public') {
 }
 
 if ($__buildCfg.LoadTypeAndFormatdata) {
-    Update-FormatData -PrependPath (Join-Path $PSScriptRoot 'Nancy.format.ps1xml' )
-    Update-TypeData -PrependPath (Join-Path $PSScriptRoot 'Nancy.types.ps1xml' ) -ErrorAction Ignore
+    Update-FormatData -PrependPath (Join-Path $PSScriptRoot 'ExcelAnt.format.ps1xml' )
+    Update-TypeData -PrependPath (Join-Path $PSScriptRoot 'ExcelAnt.types.ps1xml' ) -ErrorAction Ignore
 }
 # }
 # Export-ModuleMember -Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *

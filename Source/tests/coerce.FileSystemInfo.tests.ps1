@@ -1,4 +1,6 @@
-Import-Module Pester -MinimumVersion 5.1
+Import-Module Pester
+# requires @{ module = 'Pester'; moduleVersion = '5.1'}
+
 $VerbosePReference = 'SilentlyContinue'
 
 BeforeAll {
@@ -6,8 +8,27 @@ BeforeAll {
     . (Get-Item $Self) -ea stop
 }
 
+Context 'manuallyInvokedTests' {
+    BeforeAll {
+        # Note: Likely should use as BeforEvery, not used yet to bypass file overhead
+        $Pkg = Open-ExcelPackage -Path 'temp:\test.xlsx' -CreateIfMissing
+    }
+    It 'from [FileInfo]' {
+        # from file
+        $Pkg.File | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileSystemInfo'
+        $Pkg.File | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileInfo' # more specifically
+        coerce.ToFileSystemInfo -InputObject $Pkg.File | Should -BeOfType 'IO.FileInfo' # more specifically
+    }
+    It 'from [ExcelPackage]' { # [OfficeOpenXml.ExcelPackage]
+        $pkg | coerce.ToFileSystemInfo | Should -BeOfType 'IO.FileInfo'
+        coerce.ToFileSystemInfo -InputObject $Pkg | Should -BeOfType 'IO.FileInfo' # more specifically
+    }
+      AfterAll {
+        Close-ExcelPackage $Pkg -ea 'SilentlyContinue' -Verbose
+    }
+}
 
-Describe 'ImporExcel.coerceFileSystemInfo' {
+Describe 'ImportExcel.coerceFileSystemInfo' {
     BeforeAll {
         $Samples = @{
             File      = Get-Item $PSCommandPath
@@ -39,12 +60,12 @@ Describe 'ImporExcel.coerceFileSystemInfo' {
 
     }
     Context 'Create When Missing?' {
-        it 'ThrowIfNotSet' {
+        It 'ThrowIfNotSet' {
             { 'g:\foo\bar\cat\dog\readme.md'
                 | coerce.toFileSystemInfo # -CreateIfMissing:$false
             } | Should -Throw -Because 'it doesn''t exist and did does not have -create set'
         }
-        it 'NotThrowIfNotSet' {
+        It 'NotThrowIfNotSet' {
             { 'g:\foo\bar\cat\dog\readme.md'
                 | coerce.toFileSystemInfo -CreateIfMissing
             } | Should -Not -Throw -Because 'a missing path with create not set'
