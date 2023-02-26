@@ -1,5 +1,5 @@
 
-function coerce.ToWorkbook { #
+function coerce.ToExcelPackage { #
 
     <#
     .synopsis
@@ -31,16 +31,22 @@ function coerce.ToWorkbook { #
         # $null = $InputObject
     }
     process {
-        throw 'not implemented'
 
         <#
             DirectoryInfo       isa System.IO.FileSystemInfo
             FileInfo            isa System.IO.FileSystemInfo
         #>
-        if ($InputObject -is 'IO.FileSystemInfo') {
-            Write-Verbose 'already a filesysteminfo'
+        if($InputObject -is 'OfficeOpenXml.ExcelPackage') {
+            write-verbose 'already an ExcelPackage'
             return $InputObject
         }
+
+        throw 'left off here
+        1] simple coerce path to package if existing
+        create if requested
+        commit
+        '
+
         if ($InputObject -is 'string') {
             $alreadyExists = Test-Path $InputObject
             '{0} is string, and exists? {1}' -f @(

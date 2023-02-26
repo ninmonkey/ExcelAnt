@@ -87,13 +87,24 @@ Foreach($FolderItem in 'Private','Public') {
 
 #region SourceInit
 #Dot source the files
-[Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
-    'coerce.ToFileSystemInfo'
-    # 'Get-RandomExcelAntColor'
-    'xl.Errors.Inspect'
-)
+# [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
+#     'coerce.ToFileInfo'
+#     # 'Get-RandomExcelAntColor'
+#     'xl.Errors.Inspect'
+#     '*'
+# )
+write-warning 'cheat for now on the export rules filtering, I am not yet sure which pattern I prefer'
+
+# $modMeta = [ordered]@{
+
+# }
 Foreach($FolderItem in 'Private','Public') {
-    $ImportItemList = Get-ChildItem -Path $PSScriptRoot\$FolderItem\*.ps1 -ErrorAction SilentlyContinue
+    [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem -Path $PSScriptRoot\$FolderItem\*.ps1 -ErrorAction SilentlyContinue
+
+    # [Collection.Generic.List[Object]]$ModMeta.Files = @(
+    #     $ImportItemList | nin.AddProp -Name 'Stage' -Value '0_all'
+    # )
+
     Foreach($ImportItem in $ImportItemList) {
         Try {
             . $ImportItem
@@ -108,6 +119,8 @@ Foreach($FolderItem in 'Private','Public') {
             | Where-Object {
                 $item = $_
                 $isMatch = $item -match '^\w+-\w+$'
+                $isMatch = $isMatch -or ( $_ -match '^\w+\.\w+$')
+                $isMatch = $isMatch -or ( $__buildCfg.LooseFunctionImports )
                 '{0} => {1}' -f @(
                     $isMatch , $Item
                 ) | Write-Verbose
@@ -123,6 +136,7 @@ Foreach($FolderItem in 'Private','Public') {
         Export-ModuleMember -Function @(
             $ToExport
         )
+        $zed  = 0
     }
 }
 

@@ -2,11 +2,17 @@
 
 
 
-function coerce.ToFileSystemInfo { # build might work if name is coerce-ToFileSystemINfo
+function coerce.ToFileInfo { # build might work if name is coerce-ToFileSystemINfo
 
     <#
     .SYNOPSIS
-        coerce strings, [FileInfo], [ExcelPackage]s to [IO.FileInfo]
+        coerce strings, [FileInfo], [ExcelPackage]s to [IO.FileInfo] instances
+    .link
+        ExcelAnt\coerce.ToFileInfo
+    .link
+        ExcelAnt\coerce.ToExcelPackage
+    .DESCRIPTION
+        coerce/resolve data types
     Cases that are* supported
 
     ask for opinion on Write-Error, vs throw, vs CmdletError
@@ -51,6 +57,7 @@ function coerce.ToFileSystemInfo { # build might work if name is coerce-ToFileSy
             DirectoryInfo       isa System.IO.FileSystemInfo
             FileInfo            isa System.IO.FileSystemInfo
         #>
+
         if ($InputObject -is 'IO.FileSystemInfo') {
             Write-Verbose 'already a FileInfo instance'
             return $InputObject
