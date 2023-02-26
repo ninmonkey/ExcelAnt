@@ -25,6 +25,7 @@ see more:
 - [azure devops logging commands](https://learn.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash)
 - [github actions](https://github.com/StartAutomating/PSDevOps#write-github-actions)
 - [sample module builder.ps1](https://github.com/Jaykul/TerminalBlocks/blob/main/source/Generators/ModuleBuilderExtensions.ps1)
+- [invoke-build concepts wiki](https://github.com/nightroman/Invoke-Build/wiki/Concepts)
 
 from: [PSDevOps: creating-complex-pipelines](https://github.com/StartAutomating/PSDevOps#creating-complex-pipelines)
 
