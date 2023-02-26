@@ -23,7 +23,7 @@ Pop-Location -StackName 'harness'
 
 
 Remove-Module 'ExcelAnt' -ea ignore
-Import-Module $Harness.CurImportFullpath -Force -Verbose
+Import-Module $Harness.CurImportFullpath -Force -Verbose -PassThru
 # import-module (Join-Path $Harness.OutputPath 'ExcelAnt') -Force
 # import-module (Join-Path $Harness.SourcePath 'ExcelAnt') -Force
 
