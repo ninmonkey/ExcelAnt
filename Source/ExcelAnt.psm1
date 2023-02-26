@@ -85,17 +85,11 @@ Foreach($FolderItem in 'Private','Public') {
     }
 }
 
-
-# if($__buildCfg.ImportFromReleases){
-#     return
-# }
-
-
 #region SourceInit
 #Dot source the files
 [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
     'coerce.ToFileSystemInfo'
-    'Get-RandomNancyColor'
+    # 'Get-RandomNancyColor'
     'xl.Errors.Inspect'
 )
 Foreach($FolderItem in 'Private','Public') {
@@ -138,20 +132,3 @@ if ($__buildCfg.LoadTypeAndFormatdata) {
 }
 # }
 # Export-ModuleMember -Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *
-
-<#
-
-# old
-if($false){
-    'public', 'private' | ForEach-Object {
-        # Resolve-Path -Path $PSScriptRoot -ChildPath { $_ }
-        Resolve-Path (Join-Path $PSScriptRoot $_)
-    }
-    | Get-ChildItem -Recurse -File -Filter *.ps1
-    | Where-Object Name -NotMatch '.tests.ps1$'
-    | ForEach-Object {
-        'dot => {0}' -f @( $_ ) | Write-Verbose
-        . (Get-Item $_)
-    }
-}
-#>

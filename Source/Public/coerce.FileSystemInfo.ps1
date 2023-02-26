@@ -2,7 +2,8 @@
 
 
 # other function implements the create new or not
-function coerce.ToFileSystemInfo {
+function coerce.ToFileSystemInfo { # build might work if name is coerce-ToFileSystemINfo
+
     <#
     Cases that are* supported
 
