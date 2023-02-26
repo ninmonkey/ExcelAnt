@@ -16,6 +16,7 @@ Context 'manuallyInvokedTests' {
     }
     It 'from [FileInfo]' {
         # from file
+        # was:? coerce.ToFileSystemInfo
         $Pkg.File | coerce.ToFileInfo | Should -BeOfType 'IO.FileSystemInfo'
         $Pkg.File | coerce.ToFileInfo | Should -BeOfType 'IO.FileInfo' # more specifically
         coerce.ToFileInfo -InputObject $Pkg.File | Should -BeOfType 'IO.FileInfo' # more specifically

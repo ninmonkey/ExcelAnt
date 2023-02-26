@@ -89,7 +89,7 @@ Foreach($FolderItem in 'Private','Public') {
 #Dot source the files
 [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
     'coerce.ToFileSystemInfo'
-    # 'Get-RandomNancyColor'
+    # 'Get-RandomExcelAntColor'
     'xl.Errors.Inspect'
 )
 Foreach($FolderItem in 'Private','Public') {

@@ -19,7 +19,7 @@ function Get-RandomNancyColor {
         Pwsh> Get-RandomNancyColor
         Pwsh> Get-RandomNancyColor -Count 10
     #>
-    [Alias('Nancy->RandColor')]
+    [Alias('xl.Rand.AnsiColor')]
     [OutputType('PoshCode.Pansies.RgbColor')]
     [CmdletBinding()]
     param(
