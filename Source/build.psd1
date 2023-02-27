@@ -6,3 +6,4 @@
 }
 
 
+# PS > Build-Module -Suffix "Export-ModuleMember -Function *-* -Variable PreferenceVariable"
