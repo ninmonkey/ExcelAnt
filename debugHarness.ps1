@@ -1,4 +1,4 @@
-err -Clear
+# err -Clear
 # remove-module Ninmonkey.Console
 $PSStyle.OutputRendering = 'Ansi' # 'Ansi' | 'Host' | 'NoOutput' | 'PlainText'
 $Harness = @{
@@ -31,6 +31,10 @@ Get-Command -m excelant | Sort-Object Verb, Name | Format-Table Verb, Name -Auto
 Hr
 
 Get-Module importexcel | Tablify.ModuleInfo
+$error.Count
+# $error
+# err -clear
+
 Get-Command -m ExcelAnt
 | Sort-Object CommandType, Name
 | Format-Table Name -GroupBy CommandType
