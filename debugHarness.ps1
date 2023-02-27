@@ -1,3 +1,5 @@
+# remove-module Ninmonkey.Console
+$PSStyle.OutputRendering = 'Ansi' # 'Ansi' | 'Host' | 'NoOutput' | 'PlainText'
 $Harness = @{
     SourcePath = GI (join-path $PSScriptRoot 'Source')
     OutputPath = GI (join-path $PSScriptRoot 'Output')
@@ -7,7 +9,7 @@ $Harness.ImportMode = 'OutputPath'
 $Harness.CurImportFullpath = (Join-Path $Harness.($Harness.ImportMode) 'ExcelAnt')
 
 
-pushd -StackName 'harness' $Harness.SourcePath
+pushd -StackName 'harness' -Path $Harness.SourcePath
 build # currently this is skippable /w ImportMode == 'SourcePath'
 popd -stackname 'harness'
 'run build script here' | write-warning -wa 'Continue'
@@ -16,6 +18,8 @@ popd -stackname 'harness'
     $Harness.ImportMode
     $Harness.CurImportFullpath  | Join-string -DoubleQuote
 ) | write-warning -wa 'Continue'
+
+
 
 remove-module 'ExcelAnt' -ea ignore
 import-module $Harness.CurImportFullpath -Force -Verbose
