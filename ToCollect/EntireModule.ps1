@@ -1,5 +1,3 @@
-throw 'should never run, is an example'
-throw 'old version, grab more'
 <# AutoGen: Begin: C:\Users\cppmo_000\SkyDrive\Documents\2022\client_BDG\self\bdg_lib\src_static\core_config.ps1 #>
 # using namespace system.collections.generic
 
@@ -8692,6 +8690,19 @@ function b.opt.hashFromObj {
 #     if ($Clear) { $global:error.Clear() }
 #     return $global:error
 # }
+
+
+function b.SafeFiletimePath {
+    <#
+    .SYNOPSIS
+        timenow for safe filepaths: "2022-08-17_12-46-47Z"
+    .notes
+        distinct values to the level of a full second
+    #>
+
+    (Get-Date).ToString('u') -replace '\s+', '_' -replace ':', '-'
+}
+
 
 # function b.opt.compareStringSet {
 #     # todo: multiple ambigious overloads
