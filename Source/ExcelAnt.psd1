@@ -109,7 +109,12 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 0.0.1
+        ReleaseNotes = '
+## 0.0.2
+
+* Added classes: ExcelColor
+* New functions:
+
 * Created module'
 
         # Prerelease string of this module

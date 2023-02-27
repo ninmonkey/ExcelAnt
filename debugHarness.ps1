@@ -1,3 +1,4 @@
+
 # remove-module Ninmonkey.Console
 $PSStyle.OutputRendering = 'Ansi' # 'Ansi' | 'Host' | 'NoOutput' | 'PlainText'
 $Harness = @{
@@ -25,6 +26,10 @@ remove-module 'ExcelAnt' -ea ignore
 import-module $Harness.CurImportFullpath -Force -Verbose
 # import-module (Join-Path $Harness.OutputPath 'ExcelAnt') -Force
 # import-module (Join-Path $Harness.SourcePath 'ExcelAnt') -Force
+
+$error.Count
+$error
+err -clear
 
 Get-Command -m ExcelAnt
 | Sort-Object CommandType, Name
