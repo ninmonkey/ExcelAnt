@@ -24,13 +24,13 @@ Pop-Location -StackName 'harness'
 
 Remove-Module 'ExcelAnt' -ea ignore
 Import-Module $Harness.CurImportFullpath -Force -Verbose -PassThru
-# import-module (Join-Path $Harness.OutputPath 'ExcelAnt') -Force
-# import-module (Join-Path $Harness.SourcePath 'ExcelAnt') -Force
 
-$error.Count
-$error
-# err -clear
+# 'see also: "https://github.com/PoshCode/Pansies/blob/main/Source/Private/_init.ps1"'
+Get-Command -m excelant | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
 
+Hr
+
+Get-Module importexcel | Tablify.ModuleInfo
 Get-Command -m ExcelAnt
 | Sort-Object CommandType, Name
 | Format-Table Name -GroupBy CommandType
