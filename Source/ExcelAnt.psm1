@@ -3,6 +3,8 @@ $__buildCfg = @{
     LooseFunctionImports = $true
 }
 
+$script:__xantState = @{}
+
 #region SourceInit
 #Dot source the files
 # [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(

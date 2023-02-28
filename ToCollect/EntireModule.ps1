@@ -8691,19 +8691,6 @@ function b.opt.hashFromObj {
 #     return $global:error
 # }
 
-
-function b.SafeFiletimePath {
-    <#
-    .SYNOPSIS
-        timenow for safe filepaths: "2022-08-17_12-46-47Z"
-    .notes
-        distinct values to the level of a full second
-    #>
-
-    (Get-Date).ToString('u') -replace '\s+', '_' -replace ':', '-'
-}
-
-
 # function b.opt.compareStringSet {
 #     # todo: multiple ambigious overloads
 #     param(
