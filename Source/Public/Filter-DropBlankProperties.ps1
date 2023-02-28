@@ -1,8 +1,11 @@
-function dropBlankKeys {
+# function dropBlankKeys {
+    function Filter-DropBlankProperties {
     <#
     .SYNOPSIS
-        enumerate hashtable, drop any keys that have blankable vlaues
+        enumerates to mutate object, by dropping keys with blank values
+    .DESCRIPTION
     #>
+    [Alias('xl.Object.DropBlankProperties')]
     [CmdletBinding()]
     [OutputType('Hashtable')]
     param(

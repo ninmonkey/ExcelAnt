@@ -29,7 +29,7 @@ import-module $Harness.CurImportFullpath -Force -Verbose
 
 $error.Count
 $error
-err -clear
+# err -clear
 
 Get-Command -m ExcelAnt
 | Sort-Object CommandType, Name
