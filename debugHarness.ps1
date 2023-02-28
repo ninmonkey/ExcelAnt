@@ -33,6 +33,7 @@ Hr
 Get-Module importexcel | Tablify.ModuleInfo
 $error.Count
 # $error
+$error
 # err -clear
 
 Get-Command -m ExcelAnt

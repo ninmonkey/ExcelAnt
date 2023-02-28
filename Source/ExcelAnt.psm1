@@ -85,7 +85,6 @@ Foreach($FolderItem in 'Private','Public') {
     }
 }
 
-$script:__xantState = @{}
 
 #region SourceInit
 #Dot source the files
