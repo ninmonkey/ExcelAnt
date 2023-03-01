@@ -39,5 +39,6 @@
         "powershell.codeFormatting.whitespaceBeforeOpenBrace": true,
         "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
         "powershell.codeFormatting.whitespaceInsideBrace": true,
+        "pester.autoRunOnSave": false,
     }
 }

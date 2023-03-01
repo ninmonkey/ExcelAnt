@@ -22,11 +22,11 @@ sprint
         to auto coerce packages cleaner ?
 '@ | write-verbose -verbose
 
-throw 'finish'
-function xl.Errors.Inspect {
+function Get-ExcelPackageError {
     # filepath to an excel file
     # copy to g:\temp\xl\auto'
     # expand archive to subdir
+    [Alias('xl.Errors.Inspect')]
     param(
         [string]$ExcelPkg
         # [string]$subdir,
@@ -35,6 +35,7 @@ function xl.Errors.Inspect {
 
     )
 
+    throw 'NYI'
     ''
 
     # $coerceFilepath = Get-Item $ExcelPkg

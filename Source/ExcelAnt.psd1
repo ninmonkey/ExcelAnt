@@ -12,7 +12,7 @@
 RootModule = 'ExcelAnt.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,9 @@ Copyright = '(c) Jake Bolton 2022-2023'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-# RequiredModules = @()
+RequiredModules = @(
+    'ImportExcel'
+)
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -75,7 +77,7 @@ FunctionsToExport = '*'
 CmdletsToExport = '*'
 
 # Variables to export from this module
-VariablesToExport = '*'
+VariablesToExport = @() # '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = '*'
@@ -107,7 +109,27 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '## 0.0.1
+        ReleaseNotes = '
+## 0.0.2
+
+* Added a simple build system
+* Added classes: ExcelColor
+* New functions:
+    - Close-ExcelSession
+    - Close-ExcelWindow
+    - coerce.ToExcelPackage
+    - coerce.ToFileInfo
+    - Convert-RotateObjectProperty
+    - Enum.MembersFromTypeInfo
+    - Filter-DropBlankProperties
+    - Get-ExcelAddress
+    - Get-ExcelPackageError
+    - Invoke-SafeFileTimeTemplate
+    - New-ExcelTypeInfo
+    - New-FileTimeTemplate
+    - SafeFileTimeString
+    - Start-ExcelSession
+
 * Created module'
 
         # Prerelease string of this module
