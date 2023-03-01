@@ -18,37 +18,25 @@ function Start-ExcelSession {
     '
     # future: track names to aliases
 
+    throw 'wip'
+
     $nextPkg = Invoke-SafeFileTimeTemplate -infa 'Continue'
-
-    [Collections.Generic.List[Object]]$script:__xantState.openBookList.add( $nextPkg )
-
-    return $nextPkg
-}
-function Close-ExcelSession {
-    [CmdletBinding()]
-    param(
-        # instead of closing, return the stored list
-        [switch]$PassThru,
-        # I'm not sure whether there's a reason benefit
-        [switch]$Force
-    )
     $state = $script:__xantState.openBookList
-    if($PassThru) {
-        return $state
-    }
+    $state.add( $nextPkg )
+    'Number of items: {0}' -f @( $state.count )
+    | write-verbose -Verbose
 
-    'Books stored: {0}' -f @( $state.Count ) | Write-Information -infa 'Continue'
-
-    foreach ($Book in $script:__xantState.openBookList) {
-        try {
-            Close-ExcelPackage -ExcelPackage $Book
-            if ($Force) {
-                $book.close()
-                $book.dispose()
-            }
-        }
-        catch {
-            Write-Error "Failed closing`nnote: `nfuture will alias a label to a session.`ncurrently I never drop a reference explicitly`n$_" -ea 'continue'
-        }
+    foreach($book in $state) {
+        Close-ExcelPackage -ExcelPackage $book -ea 'continue'
+        $state.Remove( $book )
     }
+    'hardcoded temp behavior: closing existing sessions' | write-debug
+
+    # [Collections.Generic.List[Object]]$script:__xantState.openBookList.add( $nextPkg )
+    # throw
+    'StartedXlsx => "{0}"' -f @(
+        $NextPkg.File.fullName
+    )
+    | write-information -infa 'Continue'
+    return $nextPkg
 }

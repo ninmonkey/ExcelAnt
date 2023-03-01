@@ -112,8 +112,23 @@ PrivateData = @{
         ReleaseNotes = '
 ## 0.0.2
 
+* Added a simple build system
 * Added classes: ExcelColor
 * New functions:
+    - Close-ExcelSession
+    - Close-ExcelWindow
+    - coerce.ToExcelPackage
+    - coerce.ToFileInfo
+    - Convert-RotateObjectProperty
+    - Enum.MembersFromTypeInfo
+    - Filter-DropBlankProperties
+    - Get-ExcelAddress
+    - Get-ExcelPackageError
+    - Invoke-SafeFileTimeTemplate
+    - New-ExcelTypeInfo
+    - New-FileTimeTemplate
+    - SafeFileTimeString
+    - Start-ExcelSession
 
 * Created module'
 

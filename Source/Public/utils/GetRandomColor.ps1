@@ -1,7 +1,7 @@
 
 # or import nancy?
 
-function Get-RandomNancyColor {
+function Get-RandomColor {
     <#
     .synopsis
         random 24bit color
