@@ -1,0 +1,177 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    /*
+        docs: https://code.visualstudio.com/docs/terminal/basics#_automating-terminals-with-tasks
+    */
+    "version": "2.0.0",
+    // "tasks": [
+    /*
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "shell",
+            "args": [
+                "build",
+                // Ask dotnet build to generate full paths for file names.
+                "/property:GenerateFullPaths=true",
+                // Do not generate summary otherwise it leads to duplicate errors in Problems panel
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "group": {
+                "isDefault": true,
+                "kind": "build",
+            },
+            "problemMatcher": "$msCompile"
+        }
+        */
+    // {
+    // "presentation": {
+    //     "echo": true,
+    //     "reveal": "always",
+    //     "focus": false,
+    //     "panel": "dedicated",
+    //     "panel": "shared",
+    //     "showReuseMessage": true,
+    //     "showReuseMessage": false,
+    //     "clear": false
+    // },
+    // "label": "Build It",
+    // "type": "shell",
+    // "command": "echo Hello",
+    // // "problemMatcher": []
+    // "dependsOn": [
+    // "First", "Second"
+    // ]
+    // }
+    // ]
+    "tasks": [
+        {
+            "label": "BuidModule",
+            "dependsOn": [
+                "FirstBuildItBg",
+                // "Second"
+            ],
+            // Mark as the default build task so cmd/ctrl+shift+b will create them
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            // Try start the task on folder open
+            "runOptions": {
+                "runOn": "folderOpen"
+                // "runOn": "folderOpen"
+            }
+        },
+        {
+            // The name that shows up in terminal tab
+            "label": "FirstBuildItBg",
+            // The task will launch a shell
+            "type": "shell",
+            "command": {
+                "quoting": "strong",
+                "value": [
+                    "pwsh.exe",
+                    "-C",
+                    "{ cd Source }",
+                    // ""./Source/build.psd1"
+                    // "ls ./Source"
+                ],
+            },
+            // Set the shell type
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    // "executable": "cmd.exe",
+                    "args": [
+                        "-NoLogo",
+                        "-NoProfile",
+                        "-Command",
+                        // "{ gci }"
+                    ]
+                }
+            },
+            // Mark as a background task to avoid the spinner animation on the terminal tab
+            "isBackground": true,
+            "problemMatcher": [],
+            // Create the tasks in a terminal group
+            "presentation": {
+                "group": "my-group"
+            }
+        },
+        {
+            "label": "Second",
+            "type": "shell",
+            "command": "",
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    "args": []
+                }
+            },
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": {
+                "group": "my-group"
+            }
+        },
+        {
+            "label": "Create terminals",
+            "dependsOn": [
+                "First",
+                "Second"
+            ],
+            // Mark as the default build task so cmd/ctrl+shift+b will create them
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            // Try start the task on folder open
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        },
+        {
+            // The name that shows up in terminal tab
+            "label": "First",
+            // The task will launch a shell
+            "type": "shell",
+            "command": "",
+            // Set the shell type
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    // "executable": "cmd.exe",
+                    "args": [
+                        "-NoLogo",
+                        "-NoProfile",
+                        // , "-Command
+                    ]
+                }
+            },
+            // Mark as a background task to avoid the spinner animation on the terminal tab
+            "isBackground": true,
+            "problemMatcher": [],
+            // Create the tasks in a terminal group
+            "presentation": {
+                "group": "my-group"
+            }
+        },
+        {
+            "label": "Second",
+            "type": "shell",
+            "command": "",
+            "options": {
+                "shell": {
+                    "executable": "pwsh.exe",
+                    "args": []
+                }
+            },
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": {
+                "group": "my-group"
+            }
+        }
+    ]
+}
