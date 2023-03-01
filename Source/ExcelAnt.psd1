@@ -12,7 +12,7 @@
 RootModule = 'ExcelAnt.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.2'
+ModuleVersion = '0.0.3'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,8 @@ CompanyName = 'Unknown'
 Copyright = '(c) Jake Bolton 2022-2023'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Commands that extend ImportExcel. It simplifies using ImportExcel from the command line, using my preferences.'
+
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
