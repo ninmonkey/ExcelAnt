@@ -7,7 +7,7 @@ function Invoke-SafeFileTimeTemplate {
         distinct values to the level of a full second
     #>
     # [Alias('xl.New.Safetime')]
-    [Outputs('OfficeOpenXml.ExcelPackage')]
+    [OutputType('OfficeOpenXml.ExcelPackage')]
     [Alias(
         'xl.New.SafeTime',
         'New-FileTimeTemplate'

@@ -8,8 +8,7 @@ function Start-ExcelSession {
         create a new excel package, either replace existing or create a new file
     .DESCRIPTION
         this is called the first time, allowing you to auto rotate the file, once per run. Not new files every export
-    #>
-
+    .notes
     '
     todo
         - [ ] generates temp name, saves to a new sheet.
@@ -17,9 +16,8 @@ function Start-ExcelSession {
             which maps to the filesafetime
     '
     # future: track names to aliases
-
-    throw 'wip'
-
+    #>
+    write-warning 'still a WIP'
     $nextPkg = Invoke-SafeFileTimeTemplate -infa 'Continue'
     $state = $script:__xantState.openBookList
     $state.add( $nextPkg )
@@ -35,7 +33,7 @@ function Start-ExcelSession {
     # [Collections.Generic.List[Object]]$script:__xantState.openBookList.add( $nextPkg )
     # throw
     'StartedXlsx => "{0}"' -f @(
-        $NextPkg.File.fullName
+        $nextPkg.File.fullName
     )
     | write-information -infa 'Continue'
     return $nextPkg
