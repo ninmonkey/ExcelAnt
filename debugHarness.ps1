@@ -1,4 +1,5 @@
 # err -Clear
+err -Clear
 # remove-module Ninmonkey.Console
 $PSStyle.OutputRendering = 'Ansi' # 'Ansi' | 'Host' | 'NoOutput' | 'PlainText'
 $Harness = @{

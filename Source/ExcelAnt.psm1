@@ -94,11 +94,11 @@ Foreach($FolderItem in 'Private','Public') {
 #     'xl.Errors.Inspect'
 #     '*'
 # )
-write-warning 'cheat for now on the export rules filtering, I am not yet sure which pattern I prefer'
 
 # $modMeta = [ordered]@{
 
 # }
+# write-warning 'cheat for now on the export rules filtering, I am not yet sure which pattern I prefer'
 Foreach($FolderItem in 'Private','Public') {
     [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem -Path $PSScriptRoot\$FolderItem\*.ps1 -ErrorAction SilentlyContinue
 
