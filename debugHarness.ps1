@@ -11,7 +11,7 @@ $Harness.CurImportFullpath = (Join-Path $Harness.($Harness.ImportMode) 'ExcelAnt
 
 
 Push-Location -StackName 'harness' -Path $Harness.SourcePath
-build # currently this is skippable /w ImportMode == 'SourcePath'
+build -Verbose -ea 'break' # currently this is skippable /w ImportMode == 'SourcePath'
 Pop-Location -StackName 'harness'
 'run build script here' | Write-Warning -wa 'Continue'
 
