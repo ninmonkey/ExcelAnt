@@ -1,3 +1,4 @@
+Err -clear
 # Import-Module 'H:\data\2023\pwsh\GitLogger' -Force -MinimumVersion 0.1.0 -PassThru -ea 'stop'
 impo 'H:\data\2023\pwsh\GitLogger' -Force -Verbose:$false # *>$null
 Import-Module ExcelAnt -PassThru -Force -MinimumVersion 0.0.3  -Verbose:$false # *>$null
@@ -15,21 +16,24 @@ function xl.enumerateKeysOfType {
 
 
 $q = @{}
-$all = $q.All = Get-Command -m ExcelAnt -All
+$all = $q.All ??= Get-Command -m ExcelAnt -All
+
+
+return
 # $q.BaseTypeNames = gcm | % GetType | Sort -Unique Name | % Name
-$q.BaseType_names = Get-Command | ForEach-Object GetType | ForEach-Object Fullname | sort -unique
+$q.BaseType_names = Get-Command | ForEach-Object GetType | ForEach-Object Fullname | Sort-Object -Unique
 $q.BaseType_info = @(Get-Command | ForEach-Object GetType | ForEach-Object Fullname | Sort-Object -Unique ) | ForEach-Object { $_ -as 'type' }
 
 # visualize types
 Get-Command -m ImportExcel -All | s -First 5 | Format-List -Force *
-$q.BaseType_info | %{ $_ | xl.enumerateKeysOfType | join.ul }
+$q.BaseType_info | ForEach-Object { $_ | xl.enumerateKeysOfType | join.ul }
 
 
 'summary of '
 $Q.Keys | Sort-Object | Join-String -op "`n - " -sep "`n - "
 
 'common property names'
-$q.BaseType_info | xl.enumerateKeysOfType | group -NoElement | sort Count -Descending
+$q.BaseType_info | xl.enumerateKeysOfType | Group-Object -NoElement | Sort-Object Count -Descending
 
 
 
