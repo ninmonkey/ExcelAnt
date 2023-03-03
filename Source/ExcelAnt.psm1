@@ -2,6 +2,29 @@ $__buildCfg = @{
     LoadTypeAndFormatdata = $false
     LooseFunctionImports = $true
 }
+$script:__moduleInfo = @{
+    Files = [Collection.Generic.List[Object]]::new()
+}
+class newModuleEvent {
+    [string]$Label
+    [object]$Data
+}
+function newEventRecord {
+    # not literal events
+    [OutputTYpe('newModuleEvent')]
+    param(
+        [Parameter(Mandatory, Position=0)]
+        [string]$Label,
+
+        [Parameter(Mandatory, Position=1)]
+        [object]$Data
+    )
+
+    return [newModuleEvent]@{
+        Label = $Label
+        $Data = $Data
+    }
+}
 
 
 #region SourceInit
@@ -18,7 +41,14 @@ $__buildCfg = @{
 # }
 # write-warning 'cheat for now on the export rules filtering, I am not yet sure which pattern I prefer'
 Foreach($FolderItem in 'Private','Public') {
-    [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem -Path $PSScriptRoot\$FolderItem\*.ps1 -ErrorAction SilentlyContinue
+    # [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem -Path $PSScriptRoot\$FolderItem\*.ps1 -ErrorAction SilentlyContinue
+    $getChildItemSplat = @{
+        Path = "$PSScriptRoot\$FolderItem\*.ps1"
+        # ErrorAction = 'SilentlyContinue'
+        Recurse = $true
+    }
+
+    [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem @getChildItemSplat
 
     # [Collection.Generic.List[Object]]$ModMeta.Files = @(
     #     $ImportItemList | nin.AddProp -Name 'Stage' -Value '0_all'
@@ -55,7 +85,6 @@ Foreach($FolderItem in 'Private','Public') {
         Export-ModuleMember -Function @(
             $ToExport
         )
-        $zed  = 0
     }
 }
 
