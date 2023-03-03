@@ -7,11 +7,13 @@ function Tablify.ModuleInfo {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory, ValueFromPipeline)]
-        $InputObject
+        [object[]]$InputObject
     )
 
     process {
 
+        wait-debugger
+        $InputObject
     }
 
 }

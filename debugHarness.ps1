@@ -37,3 +37,7 @@ Get-Command -m ExcelAnt
 
 # 'see also: "https://github.com/PoshCode/Pansies/blob/main/Source/Private/_init.ps1"'
 Get-Command -m excelant | Sort-Object Verb, Name | Format-Table Verb, Name -AutoSize
+
+hr
+
+get-module importexcel | Tablify.ModuleInfo
