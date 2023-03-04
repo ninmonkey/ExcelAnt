@@ -1,3 +1,10 @@
+## functions 
+
+- [ ] Re(sort) column property naming order when using `[PSCO]`
+- [ ] drop empty properties
+
+## todo
+
 Loaded modules don't show functions.
 Can calling export-moduleMember be an issue? or cached module data ?
 
