@@ -4,8 +4,9 @@ Import-Module Pester
 $VerbosePReference = 'SilentlyContinue'
 
 BeforeAll {
-    $self = $PSCommandPath -replace '\.tests\.ps1$', '.ps1'
-    . (Get-Item $Self) -ea stop
+    Import-Module ExcelAnt -Force
+    # $self = $PSCommandPath -replace '\.tests\.ps1$', '.ps1'
+    # . (Get-Item $Self) -ea stop
 }
 
 Context 'manuallyInvokedTests' {
