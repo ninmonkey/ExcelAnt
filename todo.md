@@ -1,6 +1,8 @@
 ## functions 
 
 - [ ] Re(sort) column property naming order when using `[PSCO]`
+- [ ] func to auto-convert lists to `JoinCsv` for strings like export-excel/csv
+  - [ ] this is in contrast to `unpivot`/ `explodeProperties`
 - [ ] drop empty properties
 
 ## todo
