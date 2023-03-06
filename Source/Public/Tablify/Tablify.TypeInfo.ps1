@@ -11,6 +11,7 @@ class tablify_TypeInfoRecord {
     #>
     [string]$Name
     [string]$FullName
+    [string]$ShortName # has color
     [string]$BaseType
     [string]$Namespace
     [string]$Value
