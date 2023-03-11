@@ -1,3 +1,4 @@
+# **/*/Output/
 # Prerequisites
 *.d
 
@@ -40,3 +41,4 @@
 .output/*
 .export/*
 Output/
+
