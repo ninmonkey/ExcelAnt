@@ -1,3 +1,5 @@
+throw 'should never run, is an example'
+throw 'old version, grab more'
 <# AutoGen: Begin: C:\Users\cppmo_000\SkyDrive\Documents\2022\client_BDG\self\bdg_lib\src_static\core_config.ps1 #>
 # using namespace system.collections.generic
 

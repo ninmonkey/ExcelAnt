@@ -5,6 +5,29 @@
         }
     ],
     "settings": {
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/Output": true,
+            "**/Output/*": true,
+            "**/Output": true,
+            "**/.DS_Store": true,
+            "**/Thumbs.db": true,
+        },
+        "search.exclude": {
+            "**/node_modules": true,
+            "**/Output": true,
+            "**/bower_components": true,
+            "**/*.code-search": true
+        },
+        "files.watcherExclude": {
+            "**/.git/objects/**": true,
+            "**/.git/subtree-cache/**": true,
+            "**/node_modules/*/**": true,
+            "**/.hg/store/**": true
+        },
         //-------- PowerShell Configuration --------
         // Use a custom PowerShell Script Analyzer settings file for this workspace.
         // Relative paths for this setting are always relative to the workspace root dir.
