@@ -12,7 +12,7 @@
 RootModule = 'ExcelAnt.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.6'
+ModuleVersion = '0.0.7'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -21,7 +21,7 @@ ModuleVersion = '0.0.6'
 GUID = '6f777508-0f64-468a-8106-0eaf7a606a4d'
 
 # Author of this module
-Author = 'Jake Bolton <jake.bolton.314@gmail.com>'
+Author = 'Jake Bolton <jake.bolton.314@gmail.com>, <ninmonkey@gmail.com>'
 
 # Company or vendor of this module
 CompanyName = 'Unknown'
@@ -81,7 +81,10 @@ CmdletsToExport = '*'
 VariablesToExport = @() # '*'
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = '*'
+AliasesToExport = @(
+    # 'xl.Format.Datetime.CompareStrings'
+    '*'
+)
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

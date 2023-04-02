@@ -3,7 +3,7 @@ $__buildCfg = @{
     LooseFunctionImports = $true
 }
 $script:__moduleInfo = @{
-    Files = [Collection.Generic.List[Object]]::new()
+    Files = [Collections.Generic.List[Object]]::new()
 }
 class newModuleEvent {
     [string]$Label
@@ -50,7 +50,7 @@ Foreach($FolderItem in 'Private','Public') {
 
     [Collections.Generic.List[Object]]$ImportItemList = Get-ChildItem @getChildItemSplat
 
-    # [Collection.Generic.List[Object]]$ModMeta.Files = @(
+    # [Collections.Generic.List[Object]]$ModMeta.Files = @(
     #     $ImportItemList | nin.AddProp -Name 'Stage' -Value '0_all'
     # )
 
@@ -78,9 +78,6 @@ Foreach($FolderItem in 'Private','Public') {
         )
         $ToExport | Join-String -sep ', ' -single -op 'ToExport = @( ' -os ' )'
         | write-verbose
-
-        $ToExport.AddRange( $hardcodedToExportFunc )
-        | sort -unique
 
         Export-ModuleMember -Function @(
             $ToExport

@@ -19,6 +19,23 @@
             }
         },
         {
+            "name": "[xl🐜] Debug - 🧪 Build Examples",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "${workspaceFolder}/debug_harness.examples.ps1",
+            "args": [
+                "-NoProfile"
+                // "-TestName",
+                // "Test-Get-All-Users",
+            ],
+            "cwd": "${workspaceFolder}",
+            "presentation": {
+                "hidden": false,
+                "group": "b",
+                "order": 1
+            }
+        },
+        {
             "name": "[xl🐜] Pwsh Interactive Session",
             "type": "PowerShell",
             "request": "launch",

@@ -64,7 +64,8 @@ function Tablify.ModuleInfo {
     }
 
     process {
-
+        write-warning 'finish me'
+        throw 'finish me'
         Wait-Debugger
         $InputObject
     }

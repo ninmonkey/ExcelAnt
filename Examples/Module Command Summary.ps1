@@ -2,6 +2,7 @@ Err -clear
 # Import-Module 'H:\data\2023\pwsh\GitLogger' -Force -MinimumVersion 0.1.0 -PassThru -ea 'stop'
 impo 'H:\data\2023\pwsh\GitLogger' -Force -Verbose:$false # *>$null
 Import-Module ExcelAnt -PassThru -Force -MinimumVersion 0.0.3  -Verbose:$false # *>$null
+IMport-module PipeWorks
 
 function xl.enumerateKeysOfType {
     <#

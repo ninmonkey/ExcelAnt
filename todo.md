@@ -1,3 +1,18 @@
+## first
+
+note: 2 modes
+
+- [ ] 1] select book based on user label (dynamic name)
+- [ ] 2] select book by filename
+- [ ] 3] openBook, creates a copy with a dynamic name to prevent any file IO errors
+
+<@--
+
+-->
+an
+
+
+
 ## functions 
 
 - [ ] Re(sort) column property naming order when using `[PSCO]`
