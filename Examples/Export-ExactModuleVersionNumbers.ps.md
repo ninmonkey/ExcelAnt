@@ -1,17 +1,17 @@
+
+quick test using
 ```ps1
-Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
-Format-ExcelAntExactModuleVersions -OutputType Basic
-Format-ExcelAntExactModuleVersions -OutputType 
+build
+impo ExcelAnt -Force -Verbose -PassThru
+Export-PipeScript -InputPath 'foo.ps.md'
 ```
-
-
 
 ~~~pipescript{
 
 get-date 
 }~~~
 
-in0:
+
 ```ps1
 Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
 ```

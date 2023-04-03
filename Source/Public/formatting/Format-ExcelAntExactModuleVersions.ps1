@@ -1,13 +1,20 @@
 function Format-ExcelAntExactModuleVersions {
     <#
     .SYNOPSIS
-        quick dump currently used modules
-    .EXAMPLE
-        get-module | ? name -match 'pipe|git|logger'
+        Generate exact module version import requirements, using loaded modules (or pipeline)
     .description
-    was
-    Import-Module PipeScript, PipeWorks, HelpOut -PassThru
-    | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; )} -sep ', '
+        .
+    .EXAMPLE
+        # pipe specific modules
+        get-module | ? name -match 'pipe|git|logger'
+        | Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+    .EXAMPLE
+        # or implicitly use the currently imported list
+
+        Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+        Format-ExcelAntExactModuleVersions -OutputType Basic
+        Format-ExcelAntExactModuleVersions -OutputType MdTable
+        Format-ExcelAntExactModuleVersions -OutputType Json
     #>
     [Alias(
         'xl.PSModule.GetVersions',
@@ -39,14 +46,6 @@ function Format-ExcelAntExactModuleVersions {
         else {
             $query = $Items | Sort-Object Name
         }
-        #     $query
-        #     | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep ",`n" -single
-        #     # | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep ', ' -single
-
-        #     # $goal = 'import-module PipeScript -RequiredVersion 0.3.4'
-        #     # Get-Module
-        #     # | Sort-Object Name
-        #     Hr
 
         switch ($OutputType) {
             'RequiredImportString' {
@@ -57,7 +56,6 @@ function Format-ExcelAntExactModuleVersions {
                         $_.Version | Join-String -single
                     )
                 } -sep "`n"
-                # Import-Module -RequiredVersion 'sd' -Name 'sdf'
             }
             'Json' {
                 $Query | %{
@@ -73,16 +71,18 @@ function Format-ExcelAntExactModuleVersions {
                 $query
                 | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep ",`n" -single
             }
+            'MdTable' {
+                @(
+                    '| Module | ExactVersion |'
+                    '| - | - |'
+                    $query
+                    | Join-String -p { '| {0} | {1} |' -f @( $_.Name ; $_.Version; ) } -sep "`n" -single
+                ) | Join-String -sep "`n"
+            }
             default {
                 throw "UnhandledFormatType: $OutputType"
-
             }
         }
     }
 }
 
-
-Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
-Format-ExcelAntExactModuleVersions -OutputType Basic
-Format-ExcelAntExactModuleVersions -OutputType MdTable
-Format-ExcelAntExactModuleVersions -OutputType Json
