@@ -13,31 +13,51 @@ get-date
 
 
 ```ps1
-Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+Format-ExcelAntExactModuleVersions -OutputType PSObject
 ```
 
 
 ~~~pipescript{
-Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+Format-ExcelAntExactModuleVersions -OutputType PSObject
+| ft -auto
 }~~~
 
+```ps1
+Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+```
+
+```ps1
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+}~~~
+```
 
 ```ps1
 Format-ExcelAntExactModuleVersions -OutputType Basic
 ```
 
-
+```ps1
 ~~~pipescript{
 Format-ExcelAntExactModuleVersions -OutputType Basic
 }~~~
+```
 
 ```ps1
 Format-ExcelAntExactModuleVersions -OutputType MdTable
 ```
 
+### MdTable default values
 
 ~~~pipescript{
 Format-ExcelAntExactModuleVersions -OutputType MdTable
+}~~~
+
+
+### MdTable: Explicit JoinString
+
+
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType MdTable | Join-String -sep "`n"
 }~~~
 
 
@@ -50,4 +70,14 @@ Format-ExcelAntExactModuleVersions -OutputType Json
 ~~~pipescript{
 Format-ExcelAntExactModuleVersions -OutputType Json
 }~~~
+
+```ps1
+Format-ExcelAntExactModuleVersions -OutputType JsonRoundTrip
+```
+
+```json
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType JsonRoundTrip
+}~~~
+```
 

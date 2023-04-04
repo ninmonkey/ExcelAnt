@@ -29,7 +29,12 @@ function Format-ExcelAntExactModuleVersions {
         # 'RequiredImportString' generates an actual import statement
         [Alias('As')]
         [parameter()]
-        [ValidateSet('Json', 'RequiredImportString', 'Basic', 'MdTable')]
+        [ValidateSet(
+            'PSObject', 'Obj',
+            'Json','JsonRoundTrip',
+            'RequiredImportString',
+            'Basic', 'MdTable'
+        )]
         [string]$OutputType = 'Basic'
     )
 
@@ -57,28 +62,63 @@ function Format-ExcelAntExactModuleVersions {
                     )
                 } -sep "`n"
             }
-            'Json' {
-                $Query | %{
+            'JsonRoundTrip' {
+                # flattens, coerces it into a round trip string
+                $Query | ForEach-Object {
                     @{
-                        Name = $_.Name
+                        Name    = $_.Name
                         Version = $_.Version
                     }
                 }
-                | SOrt-object Name
-                | COnvertTo-Json -depth 1 -Compress
+                | ConvertTo-Json -Depth 1
+                | ConvertFrom-Json
+                | ConvertTo-Json
+            }
+            'Json' {
+                $Query | ForEach-Object {
+                    @{
+                        Name    = $_.Name
+                        Version = $_.Version
+                    }
+                }
+                | Sort-Object Name
+                | ConvertTo-Json -Depth 1 -Compress -AsArray
+            }
+            { @( 'PSObject', 'Obj' ) -contains $OutputType } {
+                $Query | ForEach-Object {
+                    @{
+                        Name    = $_.Name
+                        Version = $_.Version
+                    }
+                }
+                | Sort-Object Name
+                | ConvertTo-Json -Depth 1 -Compress -AsArray
+                | ConvertFrom-Json
             }
             'Basic' {
+                # prev:
+                # $query | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep ",`n" -single
+
                 $query
-                | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep ",`n" -single
+                | Join-String -p { '{0} = {1}' -f @( $_.Name ; $_.Version; ) } -sep "`n"
             }
             'MdTable' {
                 @(
                     '| Module | ExactVersion |'
                     '| - | - |'
                     $query
-                    | Join-String -p { '| {0} | {1} |' -f @( $_.Name ; $_.Version; ) } -sep "`n" -single
+                    | Join-String -p { '| {0} | {1} |' -f @( $_.Name ; $_.Version; ) } -sep "`n"
                 ) | Join-String -sep "`n"
             }
+            # 'Hashtable' {
+            #     $Query | ForEach-Object {
+            #         @{
+            #             Name    = $_.Name
+            #             Version = $_.Version
+            #         }
+            #     }
+
+            # }
             default {
                 throw "UnhandledFormatType: $OutputType"
             }
