@@ -1,7 +1,11 @@
-# ExcellAnt
+## ExcelAnt
 
 A wrapper for ImportExcel using my defaults.
-Pronounced ex-cell-ant, or ExcelEnt.
+Pronounced as `Ex-Cell-Ant`, or `Excellent`.
+
+## Examples
+
+- [Export Module Version Numbers](./Examples/Export-ExactModuleVersionNumbers.md)
 
 <!--
 
@@ -18,6 +22,9 @@ still missing?
 
 
 -->
+
+
+<!--
 see more:
 
 - https://github.com/StartAutomating/PSDevOps
@@ -36,3 +43,4 @@ New-ADOPipeline -Job TestPowerShellOnLinux, TestPowerShellOnMac, TestPowerShellO
 New-ADOPipeline -Stage PowerShellStaticAnalysis, TestPowerShellCrossPlatform, UpdatePowerShellGallery
 ```
 
+-->
