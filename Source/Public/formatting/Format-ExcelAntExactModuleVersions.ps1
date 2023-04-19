@@ -15,6 +15,40 @@ function Format-ExcelAntExactModuleVersions {
         Format-ExcelAntExactModuleVersions -OutputType Basic
         Format-ExcelAntExactModuleVersions -OutputType MdTable
         Format-ExcelAntExactModuleVersions -OutputType Json
+    .EXAMPLE
+        # to embed within markdown, see: <https://github.com/ninmonkey/ExcelAnt/blob/main/Examples/Export-ExactModuleVersionNumbers.md>
+
+        ~~~pipescript{
+        [PSCustomObject]@{
+        Table = Format-ExcelAntExactModuleVersions -OutputType PSObject
+        } | Sort Name
+        }~~~
+
+        ```
+        ~~~pipescript{
+        Format-ExcelAntExactModuleVersions -OutputType Basic
+        }~~~
+        ```
+
+        ```
+        ~~~pipescript{
+        Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+        }~~~
+        ```
+
+        ```json
+        ~~~pipescript{
+        Format-ExcelAntExactModuleVersions -OutputType Json
+        }~~~
+        ```
+
+        ~~~pipescript{
+        [PSCustomObject]@{ Table =  $PSVersionTable }
+        }~~~
+        ```
+
+    .LINK
+        https://github.com/ninmonkey/ExcelAnt/blob/main/Examples/Export-ExactModuleVersionNumbers.md
     #>
     [Alias(
         'xl.PSModule.GetVersions',

@@ -28,6 +28,7 @@ Export-Pipescript -InputPath .\Export-ExactModuleVersionNumbers.ps.md
 
 ## Tables
 
+
 ~~~pipescript{
 [PSCustomObject]@{
     Table = Format-ExcelAntExactModuleVersions -OutputType PSObject
@@ -70,7 +71,8 @@ Format-ExcelAntExactModuleVersions -OutputType Json
 
 ## PSVersionTable
 
+
 ~~~pipescript{
 [PSCustomObject]@{ Table =  $PSVersionTable }
 }~~~
-```
+

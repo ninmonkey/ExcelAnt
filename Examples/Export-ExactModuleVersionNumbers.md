@@ -51,6 +51,7 @@ Export-Pipescript -InputPath .\Export-ExactModuleVersionNumbers.ps.md
 |PowerShellEditorServices.VSCode  |0.2.0  |
 |PSReadLine                       |2.2.6  |
 |ugit                             |0.3.8  |
+|ugit.format.ps1xml               |0.0    |
 
 
 
@@ -77,6 +78,7 @@ PowerShellEditorServices.Commands = 0.2.0
 PowerShellEditorServices.VSCode = 0.2.0
 PSReadLine = 2.2.6
 ugit = 0.3.8
+ugit.format.ps1xml = 0.0
 ```
 
 ## As PowerShell Import Commands
@@ -101,13 +103,14 @@ Import-Module 'PowerShellEditorServices.Commands' -RequiredVersion = '0.2.0'
 Import-Module 'PowerShellEditorServices.VSCode' -RequiredVersion = '0.2.0'
 Import-Module 'PSReadLine' -RequiredVersion = '2.2.6'
 Import-Module 'ugit' -RequiredVersion = '0.3.8'
+Import-Module 'ugit.format.ps1xml' -RequiredVersion = '0.0'
 ```
 
 
 ## Json 
 
 ```json
-[{"Name":"CimCmdlets","Version":"7.0.0.0"},{"Name":"ClassExplorer","Version":"2.3.3"},{"Name":"EditorServicesCommandSuite","Version":"1.0.0"},{"Name":"ExcelAnt","Version":"0.0.8"},{"Name":"ImportExcel","Version":"7.8.4"},{"Name":"Metadata","Version":"1.5.7"},{"Name":"Microsoft.PowerShell.Management","Version":"7.0.0.0"},{"Name":"Microsoft.PowerShell.Security","Version":"7.0.0.0"},{"Name":"Microsoft.PowerShell.Utility","Version":"7.0.0.0"},{"Name":"Microsoft.WSMan.Management","Version":"7.0.0.0"},{"Name":"Ninmonkey.Console","Version":"0.2.43"},{"Name":"Pansies","Version":"2.6.0"},{"Name":"Pipescript","Version":"0.2.4"},{"Name":"PipeScript.format.ps1xml","Version":"0.0"},{"Name":"Pipeworks","Version":"1.9.9.4"},{"Name":"PowerShellEditorServices.Commands","Version":"0.2.0"},{"Name":"PowerShellEditorServices.VSCode","Version":"0.2.0"},{"Name":"PSReadLine","Version":"2.2.6"},{"Name":"ugit","Version":"0.3.8"}]
+[{"Name":"CimCmdlets","Version":"7.0.0.0"},{"Name":"ClassExplorer","Version":"2.3.3"},{"Name":"EditorServicesCommandSuite","Version":"1.0.0"},{"Name":"ExcelAnt","Version":"0.0.8"},{"Name":"ImportExcel","Version":"7.8.4"},{"Name":"Metadata","Version":"1.5.7"},{"Name":"Microsoft.PowerShell.Management","Version":"7.0.0.0"},{"Name":"Microsoft.PowerShell.Security","Version":"7.0.0.0"},{"Name":"Microsoft.PowerShell.Utility","Version":"7.0.0.0"},{"Name":"Microsoft.WSMan.Management","Version":"7.0.0.0"},{"Name":"Ninmonkey.Console","Version":"0.2.43"},{"Name":"Pansies","Version":"2.6.0"},{"Name":"Pipescript","Version":"0.2.4"},{"Name":"PipeScript.format.ps1xml","Version":"0.0"},{"Name":"Pipeworks","Version":"1.9.9.4"},{"Name":"PowerShellEditorServices.Commands","Version":"0.2.0"},{"Name":"PowerShellEditorServices.VSCode","Version":"0.2.0"},{"Name":"PSReadLine","Version":"2.2.6"},{"Name":"ugit","Version":"0.3.8"},{"Name":"ugit.format.ps1xml","Version":"0.0"}]
 ```
 ## Json Expanded
 
@@ -188,6 +191,10 @@ Import-Module 'ugit' -RequiredVersion = '0.3.8'
   {
     "Name": "ugit",
     "Version": "0.3.8"
+  },
+  {
+    "Name": "ugit.format.ps1xml",
+    "Version": "0.0"
   }
 ]
 ```
@@ -195,10 +202,11 @@ Import-Module 'ugit' -RequiredVersion = '0.3.8'
 ## PSVersionTable
 
 
+
 |PSVersion|PSEdition|GitCommitId|OS                          |Platform|PSCompatibleVersions|PSRemotingProtocolVersion|SerializationVersion|WSManStackVersion|
 |---------|---------|-----------|----------------------------|--------|--------------------|-------------------------|--------------------|-----------------|
 |7.3.3    |Core     |7.3.3      |Microsoft Windows 10.0.19045|Win32NT |1.0                 |2.0                      |3.0                 |4.0              |5.0|5.1.10032.0|6.0.0|6.1.0|6.2.0|7.0.0|7.1.0|7.2.0|7.3.3|2.3|1.1.0.1|3.0|
 
 
-```
+
 
