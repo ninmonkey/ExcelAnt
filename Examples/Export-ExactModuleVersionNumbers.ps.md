@@ -17,50 +17,58 @@ Export-Pipescript -InputPath .\Export-ExactModuleVersionNumbers.ps.md
 ```
 
 - [To Build](#to-build)
-- [Specify Specific Modules](#specify-specific-modules)
-- [Specify Modules Without Importing them](#specify-modules-without-importing-them)
-- [Tables](#tables)
 - [Plain Text](#plain-text)
 - [As PowerShell Import Commands](#as-powershell-import-commands)
 - [Json](#json)
 - [Json Expanded](#json-expanded)
+- [Specify Modules Without Importing them](#specify-modules-without-importing-them)
 - [PSVersionTable](#psversiontable)
 
-
-## Specify Specific Modules
-
-You can choose specific modules to export by piping modules to the command
-
 <!-- 
+You can choose specific modules to export by piping modules to the command
 # Commented out because importing from within Pipescript will currently crash.
 > Import-Module Pipeworks, Pipescript, ExcelAnt, Ugit
 -->
 
-~~~pipescript{
+## Plain Text 
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
-Get-Module
-| ? name -match 'pipe|excel|ugit'
-| Sort-Object Name -Unique  # ignore older versions
-| ? Name -NotMatch '.ps1xml$' # ignore specific dynamic modules
-| Format-ExcelAntExactModuleVersions -OutputType MdTable
-| sort-Object 
+```
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType Basic
 }~~~
+```
 
+## As PowerShell Import Commands
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
-## Specify Modules Without Importing them
-
-The Argument `-ListAvailable` is a lot slower. However, you can use it to pipe modules without actually importing them.
-
-```ps1
+```
 ~~~pipescript{
-Get-Module PipeScript, Pipeworks, uGit, ExcelAnt -ListAvailable 
-| Sort-Object Name -Unique 
-| Format-ExcelAntExactModuleVersions -OutputType MdTable
+Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
+}~~~
+```
+
+## Json 
+<small><a href='#to-build'>Back To Top ⤴</a></small>
+
+```json
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType Json
+}~~~
+```
+## Json Expanded
+<small><a href='#to-build'>Back To Top ⤴</a></small>
+
+```json
+~~~pipescript{
+Format-ExcelAntExactModuleVersions -OutputType Json
+| ConvertFrom-Json | ConvertTo-Json
 }~~~
 ```
 
 
-## Tables
+## Specify Modules Without Importing them
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
 The default is to export all currently imported modules:
 
@@ -70,39 +78,18 @@ The default is to export all currently imported modules:
 } | Sort Name
 }~~~
 
+Using `Get-Module -ListAvailable` is a lot slower. However, you can use it to pipe modules without actually importing them.
 
-## Plain Text
+<!-- Get-Module PipeScript, Pipeworks, uGit, ExcelAnt, ClassExplorer, ImportExcel, Nancy, Ninmonkey.Console, PSReadLine, TerminalBlocks -ListAvailable  -->
 
-```
+Note: Sort is used twice on purpose. This enforces one record per module, and that **pre-release** versions correctly show up as the newest versions.
+
 ~~~pipescript{
-Format-ExcelAntExactModuleVersions -OutputType Basic
+Get-Module PipeScript, Pipeworks, uGit, ExcelAnt, ClassExplorer, ImportExcel, Nancy, Ninmonkey.Console, PSReadLine, TerminalBlocks -ListAvailable
+| Sort-Object Name, Version -Descending 
+| Sort-Object Name -Unique
+| Format-ExcelAntExactModuleVersions -OutputType MdTable
 }~~~
-```
-
-## As PowerShell Import Commands
-
-```
-~~~pipescript{
-Format-ExcelAntExactModuleVersions -OutputType RequiredImportString
-}~~~
-```
-
-
-## Json 
-
-```json
-~~~pipescript{
-Format-ExcelAntExactModuleVersions -OutputType Json
-}~~~
-```
-## Json Expanded
-
-```json
-~~~pipescript{
-Format-ExcelAntExactModuleVersions -OutputType Json
-| ConvertFrom-Json | ConvertTo-Json
-}~~~
-```
 
 ## PSVersionTable
 

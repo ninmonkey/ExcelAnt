@@ -16,74 +16,29 @@ Import-Module Pipescript
 Export-Pipescript -InputPath .\Export-ExactModuleVersionNumbers.ps.md
 ```
 
-- [or without importing any modules](#or-without-importing-any-modules)
-  - [Tables](#tables)
-  - [Plain Text](#plain-text)
-  - [As PowerShell Import Commands](#as-powershell-import-commands)
-  - [Json](#json)
-  - [Json Expanded](#json-expanded)
-  - [PSVersionTable](#psversiontable)
-
-
-## Specify Specific Modules
-
-You can choose specific modules to export by piping modules to the command
+- [To Build](#to-build)
+- [Plain Text](#plain-text)
+- [As PowerShell Import Commands](#as-powershell-import-commands)
+- [Json](#json)
+- [Json Expanded](#json-expanded)
+- [Specify Modules Without Importing them](#specify-modules-without-importing-them)
+- [PSVersionTable](#psversiontable)
 
 <!-- 
+You can choose specific modules to export by piping modules to the command
 # Commented out because importing from within Pipescript will currently crash.
 > Import-Module Pipeworks, Pipescript, ExcelAnt, Ugit
 -->
 
-| Module | ExactVersion |
-| - | - |
-| ExcelAnt | 0.0.9 |
-| PipeScript | 0.2.4 |
-| Pipeworks | 1.9.9.4 |
-
-
-## Specify Modules Without Importing them
-
-The Argument `-ListAvailable` is a lot slower. However, you can use it to pipe modules without actually importing them.
-
-# or without importing any modules
-Get-Module PipeScript, Pipeworks, uGit, ExcelAnt -ListAvailable 
-| Sort-Object Name -Unique
-
-
-## Tables
-
-The default is to export all currently imported modules:
-
-
-|Version|Name                             |
-|-------|---------------------------------|
-|7.0.0.0|CimCmdlets                       |
-|2.3.3  |ClassExplorer                    |
-|1.0.0  |EditorServicesCommandSuite       |
-|0.0.9  |ExcelAnt                         |
-|1.5.7  |Metadata                         |
-|7.0.0.0|Microsoft.PowerShell.Management  |
-|7.0.0.0|Microsoft.PowerShell.Security    |
-|7.0.0.0|Microsoft.PowerShell.Utility     |
-|0.2.43 |Ninmonkey.Console                |
-|2.6.0  |Pansies                          |
-|0.2.4  |PipeScript                       |
-|0.0    |PipeScript.format.ps1xml         |
-|1.9.9.4|Pipeworks                        |
-|0.2.0  |PowerShellEditorServices.Commands|
-|0.2.0  |PowerShellEditorServices.VSCode  |
-|2.2.6  |PSReadLine                       |
-
-
-
-
-## Plain Text
+## Plain Text 
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
 ```
 CimCmdlets = 7.0.0.0
 ClassExplorer = 2.3.3
 EditorServicesCommandSuite = 1.0.0
 ExcelAnt = 0.0.9
+GitLogger = 0.1
 Metadata = 1.5.7
 Microsoft.PowerShell.Management = 7.0.0.0
 Microsoft.PowerShell.Security = 7.0.0.0
@@ -99,12 +54,14 @@ PSReadLine = 2.2.6
 ```
 
 ## As PowerShell Import Commands
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
 ```
 Import-Module 'CimCmdlets' -RequiredVersion = '7.0.0.0'
 Import-Module 'ClassExplorer' -RequiredVersion = '2.3.3'
 Import-Module 'EditorServicesCommandSuite' -RequiredVersion = '1.0.0'
 Import-Module 'ExcelAnt' -RequiredVersion = '0.0.9'
+Import-Module 'GitLogger' -RequiredVersion = '0.1'
 Import-Module 'Metadata' -RequiredVersion = '1.5.7'
 Import-Module 'Microsoft.PowerShell.Management' -RequiredVersion = '7.0.0.0'
 Import-Module 'Microsoft.PowerShell.Security' -RequiredVersion = '7.0.0.0'
@@ -119,13 +76,14 @@ Import-Module 'PowerShellEditorServices.VSCode' -RequiredVersion = '0.2.0'
 Import-Module 'PSReadLine' -RequiredVersion = '2.2.6'
 ```
 
-
 ## Json 
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
 ```json
-[{"Version":"7.0.0.0","Name":"CimCmdlets"},{"Version":"2.3.3","Name":"ClassExplorer"},{"Version":"1.0.0","Name":"EditorServicesCommandSuite"},{"Version":"0.0.9","Name":"ExcelAnt"},{"Version":"1.5.7","Name":"Metadata"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Management"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Security"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Utility"},{"Version":"0.2.43","Name":"Ninmonkey.Console"},{"Version":"2.6.0","Name":"Pansies"},{"Version":"0.2.4","Name":"PipeScript"},{"Version":"0.0","Name":"PipeScript.format.ps1xml"},{"Version":"1.9.9.4","Name":"Pipeworks"},{"Version":"0.2.0","Name":"PowerShellEditorServices.Commands"},{"Version":"0.2.0","Name":"PowerShellEditorServices.VSCode"},{"Version":"2.2.6","Name":"PSReadLine"}]
+[{"Version":"7.0.0.0","Name":"CimCmdlets"},{"Version":"2.3.3","Name":"ClassExplorer"},{"Version":"1.0.0","Name":"EditorServicesCommandSuite"},{"Version":"0.0.9","Name":"ExcelAnt"},{"Version":"0.1","Name":"GitLogger"},{"Version":"1.5.7","Name":"Metadata"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Management"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Security"},{"Version":"7.0.0.0","Name":"Microsoft.PowerShell.Utility"},{"Version":"0.2.43","Name":"Ninmonkey.Console"},{"Version":"2.6.0","Name":"Pansies"},{"Version":"0.2.4","Name":"PipeScript"},{"Version":"0.0","Name":"PipeScript.format.ps1xml"},{"Version":"1.9.9.4","Name":"Pipeworks"},{"Version":"0.2.0","Name":"PowerShellEditorServices.Commands"},{"Version":"0.2.0","Name":"PowerShellEditorServices.VSCode"},{"Version":"2.2.6","Name":"PSReadLine"}]
 ```
 ## Json Expanded
+<small><a href='#to-build'>Back To Top ⤴</a></small>
 
 ```json
 [
@@ -144,6 +102,10 @@ Import-Module 'PSReadLine' -RequiredVersion = '2.2.6'
   {
     "Version": "0.0.9",
     "Name": "ExcelAnt"
+  },
+  {
+    "Version": "0.1",
+    "Name": "GitLogger"
   },
   {
     "Version": "1.5.7",
@@ -195,6 +157,54 @@ Import-Module 'PSReadLine' -RequiredVersion = '2.2.6'
   }
 ]
 ```
+
+
+## Specify Modules Without Importing them
+<small><a href='#to-build'>Back To Top ⤴</a></small>
+
+The default is to export all currently imported modules:
+
+
+|Version|Name                             |
+|-------|---------------------------------|
+|7.0.0.0|CimCmdlets                       |
+|2.3.3  |ClassExplorer                    |
+|1.0.0  |EditorServicesCommandSuite       |
+|0.0.9  |ExcelAnt                         |
+|0.1    |GitLogger                        |
+|1.5.7  |Metadata                         |
+|7.0.0.0|Microsoft.PowerShell.Management  |
+|7.0.0.0|Microsoft.PowerShell.Security    |
+|7.0.0.0|Microsoft.PowerShell.Utility     |
+|0.2.43 |Ninmonkey.Console                |
+|2.6.0  |Pansies                          |
+|0.2.4  |PipeScript                       |
+|0.0    |PipeScript.format.ps1xml         |
+|1.9.9.4|Pipeworks                        |
+|0.2.0  |PowerShellEditorServices.Commands|
+|0.2.0  |PowerShellEditorServices.VSCode  |
+|2.2.6  |PSReadLine                       |
+
+
+
+Using `Get-Module -ListAvailable` is a lot slower. However, you can use it to pipe modules without actually importing them.
+
+<!-- Get-Module PipeScript, Pipeworks, uGit, ExcelAnt, ClassExplorer, ImportExcel, Nancy, Ninmonkey.Console, PSReadLine, TerminalBlocks -ListAvailable  -->
+
+Note: Sort is used twice on purpose. This enforces one record per module, and that **pre-release** versions correctly show up as the newest versions.
+
+| Module | ExactVersion |
+| - | - |
+| ClassExplorer | 2.3.3 |
+| ExcelAnt | 0.0.6 |
+| ImportExcel | 7.8.4 |
+| Nancy | 0.0.1 |
+| Ninmonkey.Console | 0.2.4 |
+| PipeScript | 0.2.4 |
+| Pipeworks | 1.9.9.4 |
+| PSReadLine | 2.2.6 |
+| TerminalBlocks | 1.2.0 |
+| ugit | 0.3.6 |
 
 ## PSVersionTable
 
