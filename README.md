@@ -12,7 +12,7 @@ Pronounced as `Ex-Cell-Ant`, or `Excellent`.
 - Powered by the great [ImportExcel](https://github.com/dfinke/ImportExcel) module
 - Files with the extension `*.ps.*` are source generators using the module [PipeScript](https://github.com/StartAutomating/PipeScript)
 - Uses git repo metrics from [GetGitlogger](https://gitlogger.com)
-- 
+- To Inspect types in Powershell: [ClassExplorer](https://github.com/SeeminglyScience/ClassExplorer)
 
 ## Prounced on
 <!--
