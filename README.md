@@ -15,9 +15,9 @@ Pronounced as `Ex-Cell-Ant`, or `Excellent`.
 - To Inspect types in Powershell: [ClassExplorer](https://github.com/SeeminglyScience/ClassExplorer)
 
 
-## Prounced on
-<!--
 
+<!--
+## Prounced on
 
 Excel, Ant? Ent?
 Ex-Cell Ant?
