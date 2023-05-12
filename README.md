@@ -5,7 +5,7 @@ Pronounced as `Ex-Cell-Ant`, or `Excellent`.
 
 ## Examples
 
-- [Export Module Version Numbers](./Examples/Export-ExactModuleVersionNumbers.md)
+- Easily Output all loaded modules and version numbers [Export Module Version Numbers](./Examples/Export-ExactModuleVersionNumbers.md)
 
 ## More
 
@@ -13,6 +13,7 @@ Pronounced as `Ex-Cell-Ant`, or `Excellent`.
 - Files with the extension `*.ps.*` are source generators using the module [PipeScript](https://github.com/StartAutomating/PipeScript)
 - Uses git repo metrics from [GetGitlogger](https://gitlogger.com)
 - To Inspect types in Powershell: [ClassExplorer](https://github.com/SeeminglyScience/ClassExplorer)
+
 
 ## Prounced on
 <!--
