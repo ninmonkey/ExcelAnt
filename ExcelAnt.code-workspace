@@ -1,4 +1,4 @@
-{
+{ // sess: 2023-06-04
     "folders": [
         {
             "path": "."
@@ -63,24 +63,5 @@
         "powershell.codeFormatting.whitespaceBeforeOpenParen": true,
         "powershell.codeFormatting.whitespaceInsideBrace": true,
         "pester.autoRunOnSave": false,
-        "workbench.colorCustomizations": {
-            "activityBar.activeBackground": "#9abcca",
-            "activityBar.background": "#9abcca",
-            "activityBar.foreground": "#15202b",
-            "activityBar.inactiveForeground": "#15202b99",
-            "activityBarBadge.background": "#a75890",
-            "activityBarBadge.foreground": "#e7e7e7",
-            "commandCenter.border": "#15202b99",
-            "sash.hoverBorder": "#9abcca",
-            "statusBar.background": "#79a6b8",
-            "statusBar.foreground": "#15202b",
-            "statusBarItem.hoverBackground": "#5890a6",
-            "statusBarItem.remoteBackground": "#79a6b8",
-            "statusBarItem.remoteForeground": "#15202b",
-            "titleBar.activeBackground": "#79a6b8",
-            "titleBar.activeForeground": "#15202b",
-            "titleBar.inactiveBackground": "#79a6b899",
-            "titleBar.inactiveForeground": "#15202b99"
-        },
     }
 }

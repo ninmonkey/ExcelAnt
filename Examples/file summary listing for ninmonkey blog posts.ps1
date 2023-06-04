@@ -24,6 +24,9 @@ example of additional formatting
 
 ![screenshot of report](./img/multiple%20methods%20of%20getting%20Distinct%20Codes%20per%20year%20%E2%94%902022-12.png)
 #>
+Import-Module Nancy -ea 'continue' -PassThru
+Import-Module ExcelAnt -ea 'stop' -PassThru
+
 
 & {
     $Regex ??= @{}
@@ -43,7 +46,7 @@ example of additional formatting
         [pscustomobject]@{
             GroupMonth        = $_.LastWriteTime.ToString($fStr.YearMonth)
             Kind              = fileCategory $_.Name
-            Name              = $_.Name
+            Name              = $_.Named
             RelativeWorkspace = $_.FullName -replace $Regex.CwdPrefix, ''
             BaseName          = $_.BaseName
             FullName          = $_.FullName
@@ -54,18 +57,18 @@ example of additional formatting
         }
     }
     | Sort-Object LastModifiedDt -Descending
-    | CountIt
+    | Write-NancyCountOf
     $query
     | Where-Object extension -Match $Regex.IncludeExtension #
     | Where-Object Extension -NotMatch $Regex.ExcludeExtension  # ignore pipescript
-    | CountIt
+    | Write-NancyCountOf
     | Out-Null
 
-    # $Query | CountIt
+    # $Query | Write-NancyCountOf
     # | to-xl
 
     Close-ExcelPackage $Pkg -ea ignore
-    $PathXL = 'g:\temp\xl\monquery.xlsx'
+    $PathXL = 'g:/temp/xl/monquery.xlsx'
     Remove-Item $PathXl -ea ignore
     $Pkg = Open-ExcelPackage -Path $PathXl -Create
     $Query
