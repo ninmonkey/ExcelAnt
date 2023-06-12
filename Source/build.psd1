@@ -2,7 +2,8 @@
 @{
     ModuleManifest = "ExcelAnt.psd1"
     # The rest of the paths are relative to the manifest
-    OutputDirectory = "..\Output"
+    # OutputDirectory = "..\Output"
+    OutputDirectory = "H:/data/2023/pwsh/PsModules.Import"
 }
 
 

@@ -1,8 +1,8 @@
-name: demo List Files
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Push to GitLogger # [template generated on 2023-05-20] <https://gitlogger.com/> <https://github.com/GitLogging/GitLoggerAction>
+run-name: ${{ github.actor }} Push to GitLogger 🚀📊
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Push-GitLogger:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."

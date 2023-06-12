@@ -131,9 +131,11 @@ Foreach($FolderItem in 'Private','Public') {
         $ToExport | Join-String -sep ', ' -single -op 'ToExport = @( ' -os ' )'
         | write-verbose
 
-        $ToExport.AddRange( $hardcodedToExportFunc )
-        | sort -unique
+        if( -not [string]::IsNullOrWhiteSpace( $hardcodedToExportFunc) ) {
+            $ToExport.AddRange( @($hardcodedToExportFunc) )
+            | sort -unique
 
+        }
         Export-ModuleMember -Function @(
             $ToExport
         )
@@ -146,4 +148,12 @@ if ($__buildCfg.LoadTypeAndFormatdata) {
     Update-TypeData -PrependPath (Join-Path $PSScriptRoot 'ExcelAnt.types.ps1xml' ) -ErrorAction Ignore
 }
 # }
-# Export-ModuleMember -Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *
+# Export-ModuleMember 0-Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *
+Export-ModuleMember -Function @(
+    'Out-ExcelAntShowErrors' # 'Out.ExcelError', 'xl.Out-ShowErrors'
+) -Alias @(
+    'Out.ExcelError' # 'Out-ExcelAntShowErrors'
+    'xl.Out-ShowErrors'     # 'Out-ExcelAntShowErrors'
+
+)
+
