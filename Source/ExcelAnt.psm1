@@ -5,6 +5,9 @@ $__buildCfg = @{
 $script:__moduleInfo = @{
     Files = [Collections.Generic.List[Object]]::new()
 }
+
+[ValidateNotNull()][hashtable]$script:__xaConfigState = @{}
+
 class newModuleEvent {
     [string]$Label
     [object]$Data

@@ -46,6 +46,13 @@ Get-Command -m excelant | Sort-Object Verb, Name
                         | Format-Table Verb, Name -AutoSize
 
 hr
-& (get-module ExcelAnt) { [ExcelColor] }
+
 
 get-module importexcel | Tablify.ModuleInfo
+
+hr
+Get-ExcelAntConfig|json
+$XantConf = Get-ExcelAntConfig
+$XantConf.Path.ExportTempFolder = 'g:\temp\xl'
+Set-ExcelAntConfig $xAntConf -Verbose
+Get-ExcelAntConfig|json
