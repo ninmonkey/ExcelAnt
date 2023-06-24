@@ -64,10 +64,8 @@ function Tablify.ModuleInfo {
     }
 
     process {
-        write-warning 'finish me'
-        throw 'finish me'
-        Wait-Debugger
-        $InputObject
+        $PSCommandPath
+            | Join-String -f 'NYI: finish me: {0}'
     }
     end {
 

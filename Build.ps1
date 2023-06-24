@@ -17,6 +17,7 @@ $examples = @(
     'G:\2023-git\Jaykul🧑\TerminalBlocks\build.ps1'
     'G:\2023-git\Jaykul🧑\TerminalBlocks\RequiredModules.psd1'
     'G:\2023-git\Jaykul🧑\TerminalBlocks\.vscode\tasks.json'
+    'G:\2023-git\Jaykul🧑\TerminalBlocks\.vscode\launch.json'
 )
 $Examples | Join-String -op 'try others: ' -f "`n- <file:///{0}>"
           | Write-Host -ForegroundColor orange -bg 'gray30'
