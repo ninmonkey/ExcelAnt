@@ -46,5 +46,6 @@ Get-Command -m excelant | Sort-Object Verb, Name
                         | Format-Table Verb, Name -AutoSize
 
 hr
+& (get-module ExcelAnt) { [ExcelColor] }
 
 get-module importexcel | Tablify.ModuleInfo

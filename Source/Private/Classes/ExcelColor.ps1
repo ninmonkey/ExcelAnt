@@ -13,9 +13,9 @@ function mangle_colorHexToRgb {
 }
 class ExcelColor {
     # future: convert to argument transformation type
-    [int]$Red = 0xff
+    [int]$Red   = 0xff
     [int]$Green = 0xff
-    [int]$Blue = 0xff
+    [int]$Blue  = 0xff
     [int]$Alpha = 0xff
     [System.Drawing.Color]$Color = 'white'
 
@@ -25,16 +25,16 @@ class ExcelColor {
 
     }
     ExcelColor ( [int]$Red, [int]$Green, [int]$Blue ) {
-        $This.Red = $Red
+        $This.Red   = $Red
         $This.Green = $Green
-        $This.Blue = $Blue
+        $This.Blue  = $Blue
         $This.Color = [ExcelColor]::FromRGBA( $this.Red, $This.Green, $This.Blue )
 
     }
     ExcelColor ( [int]$Red, [int]$Green, [int]$Blue, [int]$Alpha ) {
-        $This.Red = $Red
+        $This.Red   = $Red
         $This.Green = $Green
-        $This.Blue = $Blue
+        $This.Blue  = $Blue
         $This.Alpha = $Alpha
         $This.Color = [ExcelColor]::FromRGBA( $this.Red, $This.Green, $This.Blue, $This.Alpha )
     }
