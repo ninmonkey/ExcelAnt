@@ -10,9 +10,9 @@ $ExampleConfig = @{
     ExportPath = Join-Path $PSScriptRoot 'output/PSScriptAnalyzer-ConfigurableRules.xlsx'
 }
 MkDir -path (Join-Path $PSScriptRoot 'output') -ea 'ignore'
-remove-item -LiteralPath $ExampleConfig.ExportPath -ea 'ignore'
+# remove-item -LiteralPath $ExampleConfig.ExportPath -ea 'ignore'
 
-$Pkg = Open-ExcelPackage -path $ExampleConfig.ExportPath -Create
+$Pkg = Open-ExcelPackage -path $ExampleConfig.ExportPath #-Create
 
 function Transform.ProcessRecord {
     param(
@@ -46,6 +46,7 @@ function Transform.ProcessRecord {
 }
 
 $sharedSplat = @{
+    Append        = $true
     AutoFilter    = $true
     AutoNameRange = $true
     AutoSize      = $true
@@ -60,9 +61,16 @@ $all_rules = @(
 
 $Pkg =
     $all_rules
-        | Transform.ProcessRecord
+        | Transform.ProcessRecord -OutputStyle 'Default'
         | Sort-Object RuleName, Severity, SourceName
         | Export-Excel $Pkg -work 'All_Default' -table 'All_Default_table' @sharedSplat
+$pkg =
+    Get-ScriptAnalyzerRule
+        | Where-Object {
+            $_.ImplementingType.BaseType.Name -eq 'ConfigurableRule' }
+        | Transform.ProcessRecord -OutputStyle 'Default'
+        | Sort-Object RuleName, Severity, SourceName
+        | Export-Excel $Pkg -work 'Configurable' -table 'Configurable_table' @sharedSplat
 $Pkg =
     $all_rules
         | Transform.ProcessRecord -OutputStyle 'Verbose'
@@ -84,5 +92,4 @@ gcm -m PSScriptAnalyzer | ft -AutoSize
 Close-ExcelPackage @closeSplat
 $closeSplat.SaveAs | Join-String -f 'wrote: <file:///{0}>'
 
-
-
+# throw 'not finished, some reason other tabs are not being used, try updating version number'
