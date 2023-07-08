@@ -15,11 +15,33 @@ remove-item -LiteralPath $ExampleConfig.ExportPath -ea 'ignore'
 $Pkg = Open-ExcelPackage -path $ExampleConfig.ExportPath -Create
 
 function Transform.ProcessRecord {
+    param(
+        # how to transform the [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.RuleInfo]
+        [Alias('ScriptAnalyzerRule')]
+        [Parameter(ValueFromPipeline)]
+        # [object]
+        [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.RuleInfo]$InputObject,
+
+        # default is aka 'implicit', verbose is '*'
+        [ValidateSet('Default','Verbose')]
+        [Parameter( Position=0)]
+        [string]$OutputStyle = 'Default'
+
+    )
     process {
-        $item = $_
-        $item
-            | Select-Object -Prop '*', 'b' -ea 'ignore'
-            | Dotils.Select-ExcludeBlankProperty
+        switch($OutputStyle){
+            'Default' {
+                $InputObject
+                    #| Select-Object
+                    # | Dotils.Select-ExcludeBlankProperty
+            }
+            'Verbose' {
+                $InputObject
+                    | Select-Object -Prop '*' -ea 'ignore'
+                    # | Dotils.Select-ExcludeBlankProperty
+            }
+            default { throw "unknown OutputStyle: $OutputStyle" }
+        }
     }
 }
 
@@ -31,10 +53,21 @@ $sharedSplat = @{
     TableStyle    = 'Light2'
     Verbose       = $true
 }
+$all_rules = @(
+    Get-ScriptAnalyzerRule
+    | Sort-Object RuleName, Severity, SourceName
+)
+
 $Pkg =
-    $Pkg
-    # | Transform.ProcessRecord
-    | Export-Excel $Pkg -work 'ProcList' -table 'ProcList_table' @sharedSplat
+    $all_rules
+        | Transform.ProcessRecord
+        | Sort-Object RuleName, Severity, SourceName
+        | Export-Excel $Pkg -work 'All_Default' -table 'All_Default_table' @sharedSplat
+$Pkg =
+    $all_rules
+        | Transform.ProcessRecord -OutputStyle 'Verbose'
+        | Sort-Object RuleName, Severity, SourceName
+        | Export-Excel $Pkg -work 'All_Star' -table 'All_Star_table' @sharedSplat
 
 $closeSplat = @{
     ExcelPackage = $Pkg
