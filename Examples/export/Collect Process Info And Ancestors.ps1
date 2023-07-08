@@ -82,6 +82,7 @@ function Select-ExcludeBlankProperty {
         'System.Object',
         'Selected.System.Diagnostics.Process',
         'System.Management.Automation.PSCustomObject'
+
     )]
     param(
         [ValidateNotNullOrEmpty()]
@@ -128,7 +129,6 @@ $sharedSplat = @{
 }
 $Pkg = $Anne
     | Transform.ProcessRecord
-    | Export-Excel
     | Export-Excel $Pkg -work 'ProcList' -table 'ProcList_table' @sharedSplat -TableStyle Light2  -AutoSize -AutoFilter -AutoNameRange
 
 $closeSplat = @{
