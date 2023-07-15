@@ -1,3 +1,16 @@
+## 
+
+first 
+- [ ] ClampColumns `Clamp(50, 120)` because `-AutoSize` is super super crazy
+- [ ] FixedColumnsWidth = mapping of names to sizes
+
+- [ ] SelectWorksheetOrder
+- [ ] HideWorksheet
+- [ ] `[ExcelPackageOrFileAttribute()]$Package`
+- [ ] `xlPackage` type uses `ExcelPackageOrPath` . 
+  - [ ] would returning, passthru, actually break if `dispose` is used, and the type transformation arg
+    - runs the ctor and the copy constructor/pop free the resource of the other? 
+
 ## first
 
 note: 2 modes

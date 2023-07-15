@@ -142,7 +142,6 @@ Foreach($FolderItem in 'Private','Public') {
         Export-ModuleMember -Function @(
             $ToExport
         )
-        $zed  = 0
     }
 }
 
@@ -153,10 +152,13 @@ if ($__buildCfg.LoadTypeAndFormatdata) {
 # }
 # Export-ModuleMember -Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *
 Export-ModuleMember -Function @(
+    'Format-ExcelAntRenderItemName' # Format-ExcelAntRenderItemName = { 'XL.RenderName' }
     'Out-ExcelAntShowErrors' # 'Out.ExcelError', 'xl.Out-ShowErrors'
 ) -Alias @(
+    'xa.Window.Close' # 'Close-ExcelWindow' = { 'xa.Window.Close' }
     'Out.ExcelError' # 'Out-ExcelAntShowErrors'
     'xl.Out-ShowErrors'     # 'Out-ExcelAntShowErrors'
-
+    'XL.RenderName' # Format-ExcelAntRenderItemName = { 'XL.RenderName' }
 )
+# Write-warning 'ExcelAnt::ExportModuleMember: verify: not all aliases are exporting'
 
