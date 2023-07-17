@@ -35,7 +35,7 @@ function newEventRecord {
 # [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
 #     'coerce.ToFileInfo'
 #     # 'Get-RandomExcelAntColor'
-#     'xl.Errors.Inspect'
+#     'xa.Errors.Inspect'
 #     '*'
 # )
 
@@ -94,7 +94,7 @@ Foreach($FolderItem in 'Private','Public') {
 # [Collections.Generic.List[Object]]$HardcodedToExportFunc = @(
 #     'coerce.ToFileInfo'
 #     # 'Get-RandomExcelAntColor'
-#     'xl.Errors.Inspect'
+#     'xa.Errors.Inspect'
 #     '*'
 # )
 
@@ -152,13 +152,35 @@ if ($__buildCfg.LoadTypeAndFormatdata) {
 # }
 # Export-ModuleMember -Cmdlet Find-Type, Find-Member, Format-MemberSignature, Get-Assembly, Get-Parameter -Alias *
 Export-ModuleMember -Function @(
-    'Format-ExcelAntRenderItemName' # Format-ExcelAntRenderItemName = { 'XL.RenderName' }
-    'Out-ExcelAntShowErrors' # 'Out.ExcelError', 'xl.Out-ShowErrors'
+    # more recent on top
+    'Format-ExcelAntSafeFileTimeTemplate' # 'Format-ExcelAntSafeFileTimeTemplate'  = { 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate' }
+    #
+
+    'New-ExcelAntPackageFromSafeTimeTemplate' # 'New-ExcelAntPackageFromSafeTimeTemplate' = { 'xa.New.FileTimePackage', 'xa.New.Package.FromFileTime', 'xa.New.SafeTime', 'New-FileTimeTemplate' }
+
+    'Format-ExcelAntRenderItemName' # Format-ExcelAntRenderItemName = { 'xa.RenderName' }
+    'Out-ExcelAntShowErrors' # 'Out.ExcelError', 'xa.Out-ShowErrors'
+
+
+
+
+
 ) -Alias @(
+    # more recent on top
+    'Format-SafeFileTimeTemplate' # 'Format-ExcelAntSafeFileTimeTemplate'  = { 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate' }
+    'Format-SafeFileTime'         # 'Format-ExcelAntSafeFileTimeTemplate'  = { 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate' }
+    'xa.Format-SafeFileTimeNow'   # 'Format-ExcelAntSafeFileTimeTemplate'  = { 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate' }
+    'xa.Invoke-FileTimeTemplate'  # 'Format-ExcelAntSafeFileTimeTemplate'  = { 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate' }
+    #
+    'xa.New.FileTimePackage' # 'New-ExcelAntPackageFromSafeTimeTemplate' = { 'xa.New.FileTimePackage', 'xa.New.Package.FromFileTime', 'xa.New.SafeTime', 'New-FileTimeTemplate' }
+    'xa.New.Package.FromFileTime' # 'New-ExcelAntPackageFromSafeTimeTemplate' = { 'xa.New.FileTimePackage', 'xa.New.Package.FromFileTime', 'xa.New.SafeTime', 'New-FileTimeTemplate' }
+    'xa.New.SafeTime' # 'New-ExcelAntPackageFromSafeTimeTemplate' = { 'xa.New.FileTimePackage', 'xa.New.Package.FromFileTime', 'xa.New.SafeTime', 'New-FileTimeTemplate' }
+    'New-FileTimeTemplate' # 'New-ExcelAntPackageFromSafeTimeTemplate' = { 'xa.New.FileTimePackage', 'xa.New.Package.FromFileTime', 'xa.New.SafeTime', 'New-FileTimeTemplate' }
+    #
     'xa.Window.Close' # 'Close-ExcelWindow' = { 'xa.Window.Close' }
     'Out.ExcelError' # 'Out-ExcelAntShowErrors'
-    'xl.Out-ShowErrors'     # 'Out-ExcelAntShowErrors'
-    'XL.RenderName' # Format-ExcelAntRenderItemName = { 'XL.RenderName' }
+    'xa.Out-ShowErrors'     # 'Out-ExcelAntShowErrors'
+    'xa.RenderName' # Format-ExcelAntRenderItemName = { 'xa.RenderName' }
 )
 # Write-warning 'ExcelAnt::ExportModuleMember: verify: not all aliases are exporting'
 

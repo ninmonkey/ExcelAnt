@@ -12,7 +12,7 @@
 RootModule = 'ExcelAnt.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.14'
+ModuleVersion = '0.0.15'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,33 @@ RequiredModules = @(
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = '*'
+FunctionsToExport = @(
+    # '*'
+    # ( for now, all funcs )
+    # todo later ux: for now, all commands ) Later, trim any no longer used, or private commands
+    'Close-ExcelSession'
+    'Close-ExcelWindow'
+    'coerce.ToExcelPackage'
+    'coerce.ToFileInfo'
+    'Convert-RotateObjectProperty'
+    'Enum.MembersFromTypeInfo'
+    'ExcelAnt.Join-Hashtable'
+    'Filter-DropBlankProperties'
+    'Format-ExcelAntExactModuleVersions'
+    'Format-RemoveAnsiEscape'
+    'Get-ExcelAddress'
+    'Get-ExcelAntConfig'
+    'Get-ExcelPackageError'
+    'Invoke-ExcelAntAutoSizeColumns'
+    'Invoke-SafeFileTimeTemplate'
+    'New-ExcelTypeInfo'
+    'SafeFileTimeString'
+    'Set-ExcelAntConfig'
+    'Start-ExcelSession'
+    'Tablify.ModuleInfo'
+    'Tablify.TypeInfo'
+    'Tablify'
+)
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
@@ -83,7 +109,32 @@ VariablesToExport = @() # '*'
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = @(
     # 'xl.Format.Datetime.CompareStrings'
-    '*'
+
+    # ( for now, all aliases ) Later, trim any no longer used, or private aliases
+    # todo later ux: for now, all aliases ) Later, trim any no longer used, or private aliases
+    'debug.TypeInfo.ExcelColor'
+    'ExcelAnt.MergeHashtable'
+    'New-FileTimeTemplate'
+    'nin.PSModule.GetExactVersions'
+    'nin.TableFromStdout'
+    'Out.ExcelError'
+    'xa.KeysOf'
+    'xa.Object.KeysOf'
+    'xa.StripAnsi'
+    'xa.TypeOf'
+    'xa.Window.Close'
+    'xl.Addr.Lookup'
+    'xl.AutosizeColumns'
+    'xl.enumerateKeysOfType'
+    'xl.Errors.Inspect'
+    'xl.New.SafeTime'
+    'xl.Object.DropBlankProperties'
+    'xl.Object.RotateProperties'
+    'xl.Out-ShowErrors'
+    'xl.PSModule.GetVersions'
+    'xl.Rand.AnsiColor'
+    'XL.RenderName'
+    'xl.Tablify.Md.FromStdout'
 )
 
 # DSC resources to export from this module

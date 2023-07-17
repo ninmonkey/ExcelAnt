@@ -1,15 +1,68 @@
-function Invoke-SafeFileTimeTemplate {
+# 'Format-SafeFileTimeTemplate', 'Format-SafeFileTime', 'xa.Format-SafeFileTimeNow', 'xa.Invoke-FileTimeTemplate'
+
+function Format-ExcelAntSafeFileTimeTemplate {
+    <#
+    .SYNOPSIS
+        timenow for safe filepaths: "2022-08-17_12-46-47Z"
+    .notes
+        distinct values to the level of a full second
+
+        Previously was named "Invoke-SafeFileTimeTemplate"
+            changed because it did not represent behavior, it creates a new workbook.
+
+    #>
+    # [Alias('xa.New.Safetime')]
+    [OutputType('OfficeOpenXml.ExcelPackage')]
+    [Alias(
+        'Format-SafeFileTimeTemplate',
+        'Format-SafeFileTime',
+        'xa.Format-SafeFileTimeNow',
+        'xa.Invoke-FileTimeTemplate'
+    )]
+    [CmdletBinding()]
+    param(
+        # [parameter(Mandatory, Position = 0)]
+        # [string]$Label,
+
+        [Parameter(Position = 0)]
+        # [Parameter(Position = 1)]
+        [ArgumentCompletions(
+            'export-{0}.xlsx',
+            './.output/export-{0}.xlsx',
+            '{0}.xlsx'
+        )]
+        [string]$NameTemplate,
+
+        # Root output directory, if not template
+        [ArgumentCompletions(
+            'G:\temp\xl',
+            '([IO.Path]::GetTempPath())'
+        )]
+        [Parameter(Position=1)]
+        # [Parameter(Position=2)]
+        $RelativeTo
+    )
+    write-warning 'finish writiong'
+
+}
+function New-ExcelAntPackageFromSafeTimeTemplate {
 
     <#
     .SYNOPSIS
         timenow for safe filepaths: "2022-08-17_12-46-47Z"
     .notes
         distinct values to the level of a full second
+
+        Previously was named "Invoke-SafeFileTimeTemplate"
+            changed because it did not represent behavior, it creates a new workbook.
+
     #>
-    # [Alias('xl.New.Safetime')]
+    # [Alias('xa.New.Safetime')]
     [OutputType('OfficeOpenXml.ExcelPackage')]
     [Alias(
-        'xl.New.SafeTime',
+        'xa.New.FileTimePackage',
+        'xa.New.Package.FromFileTime',
+        'xa.New.SafeTime',
         'New-FileTimeTemplate'
     )]
     [CmdletBinding()]
@@ -35,6 +88,8 @@ function Invoke-SafeFileTimeTemplate {
         # [Parameter(Position=2)]
         $RelativeTo
     )
+
+    write-warning "NYI: Should be calling 'Format-ExcelAntSafeFileTimeTemplate' here: $PSCommandPath"
 
     $Final_NameTemplate = $NameTemplate ?? '{0}.xlsx'
     # $Final_RelativeTo = $RelativeTo ?? ([IO.Path]::GetTempPath())
